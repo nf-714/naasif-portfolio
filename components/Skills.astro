@@ -97,11 +97,11 @@ const skillGroups = [
 
 <style>
 	.skills {
-		--skills-surface: #09090b;
-		--skills-ink: var(--color-secondary);
-		--skills-muted: rgba(255, 255, 255, 0.68);
-		--skills-dim: rgba(255, 255, 255, 0.42);
-		--skills-rule: rgba(255, 255, 255, 0.15);
+		--skills-surface: var(--color-surface-alt);
+		--skills-ink: var(--color-ink);
+		--skills-muted: var(--color-muted);
+		--skills-dim: var(--color-dim);
+		--skills-rule: var(--color-rule);
 		padding: clamp(6.5rem, 10vw, 10rem) 1.5rem;
 		background: var(--skills-surface);
 		color: var(--skills-ink);
@@ -139,7 +139,7 @@ const skillGroups = [
 	}
 
 	:global(.motion-ready) .skills__header h2 {
-		background-image: linear-gradient(to right, var(--skills-ink) 50%, rgba(255, 255, 255, 0.16) 50%);
+		background-image: linear-gradient(to right, var(--skills-ink) 50%, #d6d6df 50%);
 		background-position: calc(100% - var(--text-progress) * 100%) 0;
 		background-size: 200% 100%;
 		background-clip: text;
@@ -163,11 +163,11 @@ const skillGroups = [
 
 	.skills__group {
 		border: 1px solid var(--skills-rule);
-		background: rgba(255, 255, 255, 0.025);
+		background: var(--color-surface);
 	}
 
 	.skills__group--accent {
-		background: rgba(23, 59, 255, 0.09);
+		background: var(--color-accent-soft);
 	}
 
 	.skills__group > h3 {

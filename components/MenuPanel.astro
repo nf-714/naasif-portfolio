@@ -4,8 +4,7 @@
 	<aside id="site-menu" class="menu-panel" aria-label="Site menu" aria-hidden="true">
 		<div class="menu-panel__header">
 			<a class="menu-panel__brand" href="#top" data-menu-close aria-label="Nasif Fuad - back to top">
-				<span class="menu-panel__mark">N</span>
-				<span>NASIF FUAD</span>
+				<img class="menu-panel__mark" src="/icon.png" alt="" width="96" height="96" />
 			</a>
 
 			<button class="menu-panel__close" type="button" data-menu-close aria-label="Close menu">
@@ -101,7 +100,7 @@
 	.menu-backdrop {
 		position: absolute;
 		inset: 0;
-		background: rgba(4, 5, 10, 0.58);
+		background: rgba(7, 7, 13, 0.42);
 		opacity: 0;
 		transition: opacity 450ms ease;
 	}
@@ -115,7 +114,7 @@
 		position: absolute;
 		top: 0;
 		height: 100%;
-		color: var(--color-secondary);
+		color: var(--color-ink);
 	}
 
 	.menu-panel {
@@ -123,7 +122,7 @@
 		z-index: 2;
 		width: 60%;
 		padding: clamp(2rem, 4vw, 4rem) clamp(2rem, 5.5vw, 5.5rem);
-		background: #09090b;
+		background: var(--color-surface);
 		transform: scaleY(0);
 		transform-origin: top center;
 		transition: transform 800ms cubic-bezier(0.77, 0, 0.175, 1);
@@ -137,7 +136,8 @@
 		right: 0;
 		z-index: 1;
 		width: 40%;
-		background: #1c1d20;
+		background: var(--color-main);
+		color: var(--color-secondary);
 		transform: scaleY(0);
 		transform-origin: bottom center;
 		transition: transform 800ms cubic-bezier(0.77, 0, 0.175, 1) 100ms;
@@ -157,7 +157,7 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.7rem;
-		color: var(--color-secondary);
+		color: var(--color-ink);
 		font-size: 0.78rem;
 		font-weight: 600;
 		letter-spacing: 0.12em;
@@ -165,15 +165,11 @@
 	}
 
 	.menu-panel__mark {
-		display: grid;
 		width: 2rem;
+		height: 2rem;
 		aspect-ratio: 1;
-		place-items: center;
-		border: 1px solid rgba(255, 255, 255, 0.28);
 		border-radius: 50%;
-		font-family: var(--font-display);
-		font-size: 1.35rem;
-		line-height: 1;
+		object-fit: cover;
 	}
 
 	.menu-panel__close {
@@ -183,7 +179,7 @@
 		padding: 0;
 		border: 0;
 		background: transparent;
-		color: var(--color-secondary);
+		color: var(--color-ink);
 		cursor: pointer;
 		font: inherit;
 		font-size: 0.72rem;
@@ -216,7 +212,7 @@
 		display: flex;
 		align-items: baseline;
 		gap: 1.2rem;
-		color: #717172;
+		color: var(--color-muted);
 		font-size: clamp(2.5rem, 4.2vw, 4.6rem);
 		font-weight: 600;
 		line-height: 0.9;
@@ -231,12 +227,12 @@
 		font-size: 0.72rem;
 		font-weight: 600;
 		letter-spacing: 0.08em;
-		color: rgba(255, 255, 255, 0.38);
+		color: var(--color-dim);
 	}
 
 	.menu-panel__nav a:hover,
 	.menu-panel__nav a:focus-visible {
-		color: var(--color-secondary);
+		color: var(--color-ink);
 		transform: translateX(0.45rem);
 	}
 
@@ -253,7 +249,7 @@
 		font-size: 0.75rem;
 		font-weight: 600;
 		letter-spacing: 0.16em;
-		color: rgba(255, 255, 255, 0.45);
+		color: rgba(255, 255, 255, 0.68);
 		text-transform: uppercase;
 	}
 
@@ -275,14 +271,14 @@
 	}
 
 	.menu-panel__aside-meta span {
-		color: rgba(255, 255, 255, 0.42);
+		color: rgba(255, 255, 255, 0.68);
 		text-transform: uppercase;
 		letter-spacing: 0.12em;
 	}
 
 	.menu-panel__aside-meta strong {
 		font-weight: 500;
-		color: rgba(255, 255, 255, 0.86);
+		color: var(--color-secondary);
 	}
 
 	.menu-panel__aside-cta {
@@ -292,7 +288,7 @@
 		max-width: 18rem;
 		margin-top: 3rem;
 		padding: 0.9rem 1rem 0.9rem 1.2rem;
-		border: 1px solid rgba(255, 255, 255, 0.3);
+		border: 1px solid rgba(255, 255, 255, 0.48);
 		border-radius: 999px;
 		color: var(--color-secondary);
 		font-size: 0.78rem;
@@ -315,7 +311,7 @@
 	.menu-panel__aside-cta:hover,
 	.menu-panel__aside-cta:focus-visible {
 		background: var(--color-secondary);
-		color: #09090b;
+		color: var(--color-main);
 	}
 
 	:global(html.menu-open),

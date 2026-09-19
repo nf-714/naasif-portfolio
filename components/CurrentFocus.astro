@@ -58,11 +58,11 @@ const focusAreas = [
 
 <style>
 	.focus {
-		--focus-ink: var(--color-secondary);
-		--focus-muted: rgba(255, 255, 255, 0.68);
-		--focus-rule: rgba(255, 255, 255, 0.16);
+		--focus-ink: var(--color-ink);
+		--focus-muted: var(--color-muted);
+		--focus-rule: var(--color-rule);
 		padding: clamp(6.5rem, 10vw, 10rem) 1.5rem;
-		background: #09090b;
+		background: var(--color-surface-alt);
 		color: var(--focus-ink);
 	}
 
@@ -85,7 +85,7 @@ const focusAreas = [
 		font-size: 0.78rem;
 		font-weight: 600;
 		letter-spacing: 0.16em;
-		color: rgba(255, 255, 255, 0.46);
+		color: var(--color-dim);
 		text-transform: uppercase;
 	}
 

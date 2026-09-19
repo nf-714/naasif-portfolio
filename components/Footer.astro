@@ -52,13 +52,13 @@ const links = [
 <style>
 	.footer {
 		--footer-blue: var(--color-main);
-		--footer-ink: #09090b;
-		--footer-muted: rgba(23, 59, 255, 0.7);
-		--footer-tint: rgba(23, 59, 255, 0.08);
-		--footer-rule: rgba(23, 59, 255, 0.2);
+		--footer-ink: var(--color-ink);
+		--footer-muted: var(--color-muted);
+		--footer-tint: var(--color-accent-soft);
+		--footer-rule: var(--color-rule);
 		overflow: hidden;
 		padding: clamp(6rem, 9vw, 8rem) 1.5rem 2rem;
-		background: #fff;
+		background: var(--color-surface);
 		color: var(--footer-blue);
 	}
 
@@ -94,7 +94,7 @@ const links = [
 		aspect-ratio: 1;
 		border-radius: 50%;
 		background: var(--footer-blue);
-		box-shadow: 0 0 0 0.3rem rgba(23, 59, 255, 0.12);
+		box-shadow: 0 0 0 0.3rem rgba(39, 1, 255, 0.12);
 	}
 
 	.footer h2 {

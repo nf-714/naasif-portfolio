@@ -77,11 +77,11 @@ const services = [
 
 <style>
 	.services {
-		--services-surface: #09090b;
-		--services-ink: var(--color-secondary);
-		--services-muted: rgba(255, 255, 255, 0.58);
-		--services-dim: rgba(255, 255, 255, 0.35);
-		--services-rule: rgba(255, 255, 255, 0.14);
+		--services-surface: var(--color-surface);
+		--services-ink: var(--color-ink);
+		--services-muted: var(--color-muted);
+		--services-dim: var(--color-dim);
+		--services-rule: var(--color-rule);
 		padding: clamp(7rem, 10vw, 10rem) 1.5rem;
 		background: var(--services-surface);
 		color: var(--services-ink);
@@ -122,7 +122,7 @@ const services = [
 	}
 
 	:global(.motion-ready) .services__heading h2 {
-		background-image: linear-gradient(to right, var(--services-ink) 50%, rgba(255, 255, 255, 0.16) 50%);
+		background-image: linear-gradient(to right, var(--services-ink) 50%, #d6d6df 50%);
 		background-position: calc(100% - var(--text-progress) * 100%) 0;
 		background-size: 200% 100%;
 		background-clip: text;

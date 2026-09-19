@@ -11,15 +11,6 @@ const loopItems = [...items, ...items];
 ---
 
 <section id="profile" class="profile" aria-label="Profile highlights">
-	<img
-		class="profile__hand profile__hand--left"
-		src="/assets/images/marquee-hand-left.png"
-		alt=""
-		width="219"
-		height="210"
-		loading="eager"
-	/>
-
 	<div class="profile__viewport">
 		<div class="profile__track">
 			{
@@ -34,15 +25,6 @@ const loopItems = [...items, ...items];
 			}
 		</div>
 	</div>
-
-	<img
-		class="profile__hand profile__hand--right"
-		src="/assets/images/marquee-hand-right.png"
-		alt=""
-		width="299"
-		height="206"
-		loading="eager"
-	/>
 </section>
 
 <style>
@@ -93,28 +75,6 @@ const loopItems = [...items, ...items];
 		fill: currentColor;
 	}
 
-	.profile__hand {
-		position: absolute;
-		z-index: 3;
-		display: block;
-		width: auto;
-		pointer-events: none;
-		user-select: none;
-		filter: grayscale(1) drop-shadow(0 1rem 1rem rgba(13, 27, 42, 0.2));
-	}
-
-	.profile__hand--left {
-		top: 4.8rem;
-		left: 12%;
-		height: 10.7rem;
-	}
-
-	.profile__hand--right {
-		top: 4.8rem;
-		right: 8%;
-		height: 10.4rem;
-	}
-
 	@keyframes marquee {
 		to { transform: translateX(-50%); }
 	}
@@ -141,10 +101,6 @@ const loopItems = [...items, ...items];
 		.profile__item svg {
 			width: 1.4rem;
 			height: 1.4rem;
-		}
-
-		.profile__hand {
-			display: none;
 		}
 	}
 

@@ -50,12 +50,12 @@ const steps = [
 
 <style>
 	.process {
-		--process-surface: #09090b;
-		--process-card: #111114;
-		--process-card-alt: #0d0d10;
-		--process-ink: var(--color-secondary);
-		--process-muted: rgba(255, 255, 255, 0.72);
-		--process-rule: rgba(255, 255, 255, 0.14);
+		--process-surface: var(--color-surface);
+		--process-card: var(--color-surface);
+		--process-card-alt: var(--color-surface-alt);
+		--process-ink: var(--color-ink);
+		--process-muted: var(--color-muted);
+		--process-rule: var(--color-rule);
 		padding: clamp(6.5rem, 10vw, 10rem) 1.5rem;
 		background: var(--process-surface);
 		color: var(--process-ink);
@@ -116,7 +116,7 @@ const steps = [
 		padding: clamp(2.3rem, 4vw, 3.4rem);
 		border: 1px solid var(--process-rule);
 		background: var(--process-card);
-		box-shadow: 0 -1.2rem 2.8rem rgba(0, 0, 0, 0.28);
+		box-shadow: 0 -1.2rem 2.8rem rgba(21, 17, 72, 0.08);
 		transition: transform 220ms ease, background-color 220ms ease;
 	}
 
@@ -126,7 +126,7 @@ const steps = [
 
 	.process__card:hover {
 		transform: translateX(-0.45rem);
-		background: #15151a;
+		background: #f0efff;
 	}
 
 	.process__number {

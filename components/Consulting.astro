@@ -73,11 +73,11 @@ const capabilities = [
 
 <style>
 	.consulting {
-		--consulting-surface: #09090b;
-		--consulting-ink: var(--color-secondary);
-		--consulting-muted: rgba(255, 255, 255, 0.68);
-		--consulting-dim: rgba(255, 255, 255, 0.42);
-		--consulting-rule: rgba(255, 255, 255, 0.15);
+		--consulting-surface: var(--color-surface-alt);
+		--consulting-ink: var(--color-ink);
+		--consulting-muted: var(--color-muted);
+		--consulting-dim: var(--color-dim);
+		--consulting-rule: var(--color-rule);
 		padding: clamp(7rem, 10vw, 10rem) 1.5rem;
 		background: var(--consulting-surface);
 		color: var(--consulting-ink);
@@ -126,7 +126,7 @@ const capabilities = [
 		background-image: linear-gradient(
 			to right,
 			var(--consulting-ink) 50%,
-			rgba(255, 255, 255, 0.16) 50%
+			#d6d6df 50%
 		);
 		background-position: calc(100% - var(--text-progress) * 100%) 0;
 		background-size: 200% 100%;
@@ -194,7 +194,7 @@ const capabilities = [
 		overflow: hidden;
 		border: 1px solid var(--consulting-rule);
 		border-radius: 1rem;
-		background: #050507;
+		background: var(--color-surface);
 	}
 
 	.consulting__visual img {

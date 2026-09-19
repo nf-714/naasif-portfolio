@@ -66,10 +66,10 @@ const systems = [
 
 <style>
 	.systems {
-		--systems-ink: var(--color-secondary);
-		--systems-muted: rgba(255, 255, 255, 0.64);
+		--systems-ink: var(--color-ink);
+		--systems-muted: var(--color-muted);
 		padding: clamp(7rem, 11vw, 11rem) 1.5rem;
-		background: #09090b;
+		background: var(--color-surface);
 		color: var(--systems-ink);
 	}
 
@@ -109,7 +109,7 @@ const systems = [
 	}
 
 	:global(.motion-ready) .systems__header h2 {
-		background-image: linear-gradient(to right, var(--systems-ink) 50%, rgba(255, 255, 255, 0.16) 50%);
+		background-image: linear-gradient(to right, var(--systems-ink) 50%, #d6d6df 50%);
 		background-position: calc(100% - var(--text-progress) * 100%) 0;
 		background-size: 200% 100%;
 		background-clip: text;

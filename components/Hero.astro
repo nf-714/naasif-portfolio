@@ -9,13 +9,12 @@ const specialties = [
 <section id="top" class="hero" aria-labelledby="hero-title">
 	<header class="hero__header">
 		<a class="wordmark" href="/" aria-label="Nasif Fuad - home">
-			<span class="wordmark__mark">N</span>
-			<span>NASIF FUAD</span>
+			<img class="wordmark__mark" src="/black-icon.png" alt="" width="96" height="96" />
 		</a>
 
 		<div class="hero__header-meta">
 			<span class="hero__location">Dhaka, Bangladesh</span>
-			<button class="hero__menu text-[#111114]" type="button" data-menu-toggle aria-controls="site-menu" aria-expanded="false">
+			<button class="hero__menu" type="button" data-menu-toggle aria-controls="site-menu" aria-expanded="false">
 				<span>Menu</span>
 				<svg aria-hidden="true" viewBox="0 0 24 8">
 					<path d="M0 .75h14M0 7.25h24"></path>
@@ -82,17 +81,17 @@ const specialties = [
 
 <style>
 	.hero {
-		--hero-blue: #173BFF;
+		--hero-blue: var(--color-main);
 		--hero-white: #fff;
-		--hero-accent: #4361ee;
-		--hero-background: var(--hero-white);
-		--hero-ink: var(--hero-blue);
+		--hero-accent: var(--color-main);
+		--hero-background: #0b0b0d;
+		--hero-ink: var(--hero-white);
 		position: relative;
 		isolation: isolate;
 		min-height: clamp(47rem, 58vw, 59rem);
 		overflow: hidden;
 		background:
-			radial-gradient(circle at 50% 96%, rgba(67, 97, 238, 0.32), transparent 38%),
+			radial-gradient(circle at 50% 96%, rgba(39, 1, 255, 0.3), transparent 38%),
 			var(--hero-background);
 		color: var(--hero-ink);
 	}
@@ -102,8 +101,8 @@ const specialties = [
 		inset: 0;
 		z-index: -1;
 		background-image:
-			repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 4px),
-			repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0 1px, transparent 1px 3px);
+			repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 4px),
+			repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 3px);
 		content: "";
 		opacity: 0.5;
 		pointer-events: none;
@@ -118,7 +117,7 @@ const specialties = [
 		width: min(100% - 3rem, 112.5rem);
 		margin-inline: auto;
 		padding-block: 1.15rem;
-		border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 	}
 
 	.wordmark,
@@ -138,15 +137,11 @@ const specialties = [
 	}
 
 	.wordmark__mark {
-		display: grid;
 		width: 2rem;
+		height: 2rem;
 		aspect-ratio: 1;
-		place-items: center;
-		border: 1px solid rgba(255, 255, 255, 0.28);
 		border-radius: 50%;
-		font-family: var(--font-display);
-		font-size: 1.35rem;
-		line-height: 1;
+		object-fit: cover;
 	}
 
 	.hero__header-meta {
@@ -157,7 +152,7 @@ const specialties = [
 
 	.hero__location {
 		font-size: 0.78rem;
-		color: rgba(255, 255, 255, 0.66);
+		color: rgba(255, 255, 255, 0.62);
 	}
 
 	.hero__menu {
@@ -186,8 +181,8 @@ const specialties = [
 
 	.hero__menu:hover,
 	.hero__menu:focus-visible {
-		background: var(--color-secondary);
-		color: var(--color-main);
+		background: var(--color-main);
+		color: var(--color-secondary);
 	}
 
 	.hero__title-wrap {
@@ -242,8 +237,12 @@ const specialties = [
 	}
 
 	.hero__title-word--identity {
-		color: var(--hero-blue);
+		color: var(--hero-white);
 		text-shadow: none;
+	}
+
+	.hero__title-clip:nth-child(n + 3) .hero__title-word--identity {
+		color: var(--color-main);
 	}
 
 	.hero__title-word--white {
@@ -300,8 +299,8 @@ const specialties = [
 	.hero__arrow:hover,
 	.hero__arrow:focus-visible {
 		transform: translateY(0.2rem);
-		background: var(--color-secondary);
-		color: var(--color-main);
+		background: var(--color-main);
+		color: var(--color-secondary);
 	}
 
 	.hero__arrow svg {
@@ -328,7 +327,7 @@ const specialties = [
 		padding-left: 1.55rem;
 		font-size: 0.83rem;
 		font-weight: 600;
-		color: rgba(0, 0, 0, 0.75);
+		color: rgba(255, 255, 255, 0.76);
 	}
 
 	.hero__status::before,
@@ -352,7 +351,7 @@ const specialties = [
 	.hero__status::after {
 		width: 1rem;
 		height: 1rem;
-		background: rgba(23, 59, 255, 0.2);
+		background: rgba(39, 1, 255, 0.16);
 		animation: status-pulse 2.6s ease-out infinite;
 	}
 
@@ -422,7 +421,7 @@ const specialties = [
 		font-size: 0.64rem;
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
-		color: rgba(255, 255, 255, 0.45);
+		color: rgba(255, 255, 255, 0.46);
 		transform: rotate(90deg) translateX(100%);
 		transform-origin: right bottom;
 	}
@@ -542,7 +541,7 @@ const specialties = [
 			inset: auto 0 0;
 			z-index: 3;
 			height: 45%;
-			background: linear-gradient(transparent, rgba(3, 4, 94, 0.94));
+			background: linear-gradient(transparent, rgba(11, 11, 13, 0.96));
 			content: "";
 		}
 

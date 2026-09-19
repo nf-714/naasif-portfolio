@@ -25,16 +25,23 @@
 }
 
 :root {
-	--color-main: #173BFF;
-	--color-secondary: oklch(97.7% 0.013 236.62);
-	--background-main: #02040A;
-	--background-secondary: oklch(18.1% 0.146 265.522);
+	--color-main: #2701ff;
+	--color-secondary: #ffffff;
+	--color-ink: #07070d;
+	--color-muted: #52525b;
+	--color-dim: #8b8b94;
+	--color-rule: #e8e8ee;
+	--color-surface: #ffffff;
+	--color-surface-alt: #f7f7fb;
+	--color-accent-soft: rgba(39, 1, 255, 0.08);
+	--background-main: var(--color-ink);
+	--background-secondary: var(--color-surface);
 	/* Reference typography: Avenir Next, matching the Scalaar-style site. */
 	--font-body: "Avenir Next", Avenir, "Segoe UI", Helvetica, Arial, sans-serif;
 	--font-display: "Avenir Next", Avenir, "Segoe UI", Helvetica, Arial, sans-serif;
 	font-family: var(--font-body);
 	font-synthesis: none;
-	color-scheme: dark;
+	color-scheme: light;
 	background: var(--background-secondary);
 	text-rendering: optimizeLegibility;
 }
