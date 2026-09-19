@@ -1,0 +1,9 @@
+Use case: stylized-concept
+Asset type: portrait website section visual
+Input image: generated Naasif-site consulting-section comp used as a style and subject reference
+Primary request: a fresh standalone cinematic abstract architectural interior that suggests ideas becoming structured systems
+Scene: monumental dark concrete interior with tall geometric planes, deep negative space, a precise ascending stair or path, and subtle haze
+Style: photorealistic high-end architectural visualization with tactile concrete and restrained editorial lighting
+Composition: portrait 4:5, strong diagonal geometry, focal path moving from lower left toward upper right
+Color palette: neutral black, charcoal concrete, and electric cobalt blue #173BFF only
+Constraints: image only; no text, UI, border, logo, people, watermark, purple, cyan, neon tubes, gradients, sci-fi interface elements, excessive fog, or abstract blobs

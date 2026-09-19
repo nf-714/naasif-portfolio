@@ -1,0 +1,346 @@
+<section id="about" class="about" aria-labelledby="about-title" data-scroll-motion>
+	<div class="about__orb" aria-hidden="true"></div>
+
+	<div class="about__inner">
+		<div
+			class="about__eyebrow"
+			data-reveal="left"
+			style="--reveal-distance: 1.5rem; --reveal-duration: 620ms;"
+		>
+			<span>00 / The approach</span>
+			<svg aria-hidden="true" viewBox="0 0 102 9">
+				<path d="M98 8l3.5-3.5L98 1M1 4h100v1H1V4Z"></path>
+			</svg>
+		</div>
+
+		<div class="about__main">
+			<h2
+				id="about-title"
+				data-reveal="up"
+				style="--reveal-delay: 80ms; --reveal-distance: 4rem; --reveal-duration: 820ms;"
+			>
+				I build systems that connect <em class="about__highlight">data, growth, and execution.</em>
+			</h2>
+
+			<div
+				class="about__details"
+				data-reveal="up"
+				style="--reveal-delay: 190ms; --reveal-distance: 2rem; --reveal-duration: 720ms;"
+			>
+				<div class="about__scroll" aria-hidden="true">
+					<svg viewBox="0 0 10 21">
+						<path d="M5 0v20M1 16l4 4 4-4"></path>
+					</svg>
+				</div>
+
+				<div class="about__copy">
+					<p>
+						I work across AI engineering, GTM execution, business development, marketing, and analytics. I find
+						where time, information, or opportunities are getting lost, then build the workflow, tool,
+						application, or analysis that makes the next action easier to own.
+					</p>
+
+					<a class="about__cta" href="#contact">
+						<span class="about__cta-text">Explore my work</span>
+						<span class="about__cta-icon about__cta-icon--trail" aria-hidden="true">
+							<svg viewBox="0 0 12 12">
+								<path d="M1 11 11 1M11 1H1m10 0v10"></path>
+							</svg>
+						</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.about {
+		position: relative;
+		isolation: isolate;
+		overflow: hidden;
+		padding: clamp(9rem, 12vw, 12rem) 1.5rem clamp(7rem, 11vw, 11rem);
+		background: #09090b;
+		color: var(--color-secondary);
+	}
+
+	.about::before {
+		position: absolute;
+		inset: 0;
+		z-index: -2;
+		background:
+			linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px) 0 0 / 11.111% 100%,
+			radial-gradient(circle at 96% 55%, rgba(255, 255, 255, 0.05), transparent 28%);
+		content: "";
+	}
+
+	.about__orb {
+		position: absolute;
+		right: -12rem;
+		bottom: 11%;
+		z-index: -1;
+		width: 31rem;
+		aspect-ratio: 1;
+		border: 1px solid rgba(227, 242, 253, 0.12);
+		border-radius: 50%;
+		box-shadow:
+			0 0 0 4rem rgba(227, 242, 253, 0.025),
+			0 0 0 8rem rgba(227, 242, 253, 0.016);
+		transform: translate3d(0, var(--scroll-shift-y, 0px), 0);
+	}
+
+	.about__inner {
+		display: grid;
+		grid-template-columns: minmax(12rem, 1fr) minmax(0, 3.55fr);
+		gap: clamp(2rem, 5vw, 5.5rem);
+		width: min(100%, 89.5rem);
+		margin-inline: auto;
+	}
+
+	.about__eyebrow {
+		display: flex;
+		align-items: center;
+		align-self: start;
+		gap: 0.75rem;
+		padding-top: 0.45rem;
+		font-size: 1rem;
+		font-weight: 600;
+		white-space: nowrap;
+	}
+
+	.about__eyebrow svg {
+		width: min(6.4rem, 42%);
+		fill: none;
+		stroke: currentColor;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		stroke-width: 1;
+		opacity: 0.7;
+	}
+
+	.motion-ready .about__eyebrow svg path {
+		stroke-dasharray: 112;
+		stroke-dashoffset: 112;
+		transition: stroke-dashoffset 820ms cubic-bezier(0.16, 1, 0.3, 1) 160ms;
+	}
+
+	.motion-ready .about__eyebrow.is-visible svg path {
+		stroke-dashoffset: 0;
+	}
+
+	.about__main h2 {
+		max-width: 66rem;
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: clamp(3.7rem, 5.55vw, 5.4rem);
+		font-weight: 500;
+		line-height: 0.9;
+		letter-spacing: -0.018em;
+		text-wrap: balance;
+	}
+
+	.motion-ready .about__main h2[data-reveal] {
+		clip-path: inset(0 0 100% 0);
+		filter: blur(4px);
+		transition:
+			opacity var(--reveal-duration) cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay),
+			transform var(--reveal-duration) cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay),
+			clip-path 900ms cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay),
+			filter 650ms cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay);
+	}
+
+	.motion-ready .about__main h2[data-reveal].is-visible {
+		clip-path: inset(0);
+		filter: blur(0);
+	}
+
+	.about__highlight {
+		color: var(--color-main);
+		transition: color 700ms cubic-bezier(0.16, 1, 0.3, 1) 180ms;
+	}
+
+	.motion-ready .about__main h2:not(.is-visible) .about__highlight {
+		color: var(--color-secondary);
+	}
+
+	.about__main h2 em {
+		font-style: normal;
+		color: var(--color-main);
+	}
+
+	.about__details {
+		display: grid;
+		grid-template-columns: auto minmax(18rem, 30rem);
+		justify-content: start;
+		gap: 2.8rem;
+		margin-top: clamp(3rem, 5vw, 4.5rem);
+		padding-left: clamp(0rem, 8vw, 7rem);
+	}
+
+	.about__scroll {
+		display: grid;
+		width: 2.55rem;
+		height: 4.2rem;
+		place-items: center;
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		border-radius: 999px;
+		color: rgba(255, 255, 255, 0.7);
+	}
+
+	.about__scroll svg {
+		width: 0.7rem;
+		fill: none;
+		stroke: currentColor;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		stroke-width: 1.2;
+		animation: scroll-cue 2.3s ease-in-out infinite;
+	}
+
+	.about__copy p {
+		max-width: 29rem;
+		margin: 0 0 2.5rem;
+		font-size: clamp(1rem, 1.4vw, 1.22rem);
+		font-weight: 500;
+		line-height: 1.55;
+		color: rgba(255, 255, 255, 0.86);
+	}
+
+	.about__cta {
+		display: inline-flex;
+		align-items: center;
+		color: var(--color-secondary);
+		text-decoration: none;
+	}
+
+	.about__cta-icon,
+	.about__cta-text {
+		display: grid;
+		height: 3.45rem;
+		place-items: center;
+		border: 1px solid var(--color-secondary);
+		transition: opacity 180ms ease, transform 220ms ease, background-color 180ms ease, color 180ms ease;
+	}
+
+	.about__cta-icon {
+		width: 3.45rem;
+		border-radius: 50%;
+		background: var(--color-secondary);
+		color: var(--background-secondary);
+	}
+
+	.about__cta-icon svg {
+		width: 0.8rem;
+		fill: none;
+		stroke: currentColor;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		stroke-width: 1.5;
+	}
+
+	.about__cta-text {
+		z-index: 1;
+		padding-inline: 1.7rem;
+		border-radius: 999px;
+		font-size: 0.92rem;
+		font-weight: 600;
+		white-space: nowrap;
+	}
+
+	.about__cta:hover .about__cta-text,
+	.about__cta:focus-visible .about__cta-text {
+		background: var(--color-secondary);
+		color: var(--background-secondary);
+	}
+
+	.about__cta:hover .about__cta-icon--trail,
+	.about__cta:focus-visible .about__cta-icon--trail {
+		transform: rotate(45deg);
+	}
+
+	@keyframes scroll-cue {
+		0%, 100% { transform: translateY(-0.2rem); }
+		50% { transform: translateY(0.25rem); }
+	}
+
+	@media (max-width: 980px) {
+		.about {
+			padding-top: 9rem;
+		}
+
+		.about__inner {
+			grid-template-columns: 1fr;
+			gap: 2.4rem;
+		}
+
+		.about__eyebrow svg {
+			width: 6.4rem;
+		}
+
+		.about__details {
+			padding-left: 0;
+		}
+	}
+
+	@media (max-width: 620px) {
+		.about {
+			padding: 6.5rem 1rem 6rem;
+		}
+
+		.about::before {
+			background: radial-gradient(circle at 110% 55%, rgba(255, 255, 255, 0.06), transparent 42%);
+		}
+
+		.about__inner {
+			gap: 1.8rem;
+		}
+
+		.about__main h2 {
+			font-size: clamp(3.15rem, 15vw, 4.15rem);
+			line-height: 0.88;
+			text-wrap: pretty;
+		}
+
+		.about__details {
+			grid-template-columns: auto 1fr;
+			gap: 1.35rem;
+			margin-top: 2.5rem;
+		}
+
+		.about__scroll {
+			width: 2.35rem;
+			height: 3.8rem;
+		}
+
+		.about__copy p {
+			font-size: 0.98rem;
+			line-height: 1.55;
+		}
+
+		.about__cta-text {
+			padding-inline: 1.1rem;
+			font-size: 0.82rem;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.about__orb {
+			transform: none;
+		}
+
+		.about__eyebrow svg path {
+			stroke-dasharray: none;
+			stroke-dashoffset: 0;
+			transition: none;
+		}
+
+		.about__main h2 {
+			clip-path: none;
+			filter: none;
+		}
+
+		.about__scroll svg {
+			animation: none;
+		}
+	}
+</style>

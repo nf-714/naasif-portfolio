@@ -1,0 +1,370 @@
+<div class="menu-root" data-menu-root>
+	<div class="menu-backdrop" data-menu-close></div>
+
+	<aside id="site-menu" class="menu-panel" aria-label="Site menu" aria-hidden="true">
+		<div class="menu-panel__header">
+			<a class="menu-panel__brand" href="#top" data-menu-close aria-label="Nasif Fuad - back to top">
+				<span class="menu-panel__mark">N</span>
+				<span>NASIF FUAD</span>
+			</a>
+
+			<button class="menu-panel__close" type="button" data-menu-close aria-label="Close menu">
+				<span>Close</span>
+				<svg aria-hidden="true" viewBox="0 0 24 24">
+					<path d="M4 4l16 16M20 4 4 20"></path>
+				</svg>
+			</button>
+		</div>
+
+		<nav class="menu-panel__nav" aria-label="Primary navigation">
+			<a href="#top" data-menu-close><span>01</span> Introduction</a>
+			<a href="#systems" data-menu-close><span>02</span> Selected work</a>
+			<a href="#skills" data-menu-close><span>03</span> Role lanes</a>
+			<a href="#services" data-menu-close><span>04</span> What I build</a>
+			<a href="#process" data-menu-close><span>05</span> How I work</a>
+			<a href="#building-now" data-menu-close><span>06</span> Current projects</a>
+			<a href="#contact" data-menu-close><span>07</span> Contact</a>
+		</nav>
+	</aside>
+
+	<aside class="menu-panel__aside" aria-label="Contact information">
+		<div class="menu-panel__aside-inner">
+			<p class="menu-panel__aside-label">Get in touch</p>
+			<p class="menu-panel__aside-title">AI Engineer and growth systems operator connecting data, GTM, and execution.</p>
+			<div class="menu-panel__aside-meta">
+				<span>Based in</span>
+				<strong>Dhaka, Bangladesh</strong>
+			</div>
+			<div class="menu-panel__aside-meta">
+				<span>Working</span>
+				<strong>Worldwide · GMT+6</strong>
+			</div>
+			<a class="menu-panel__aside-cta" href="#contact" data-menu-close>
+				<span>Start a conversation</span>
+				<svg aria-hidden="true" viewBox="0 0 14 14">
+					<path d="M2 12 12 2M12 2H3m9 0v9"></path>
+				</svg>
+			</a>
+		</div>
+	</aside>
+</div>
+
+<script>
+	const menuRoot = document.querySelector<HTMLElement>("[data-menu-root]");
+	const menuToggle = document.querySelector<HTMLButtonElement>("[data-menu-toggle]");
+	const menuPanel = document.querySelector<HTMLElement>("#site-menu");
+
+	const closeMenu = () => {
+		if (!menuRoot || !menuToggle || !menuPanel) return;
+		menuRoot.classList.remove("is-open");
+		menuToggle.setAttribute("aria-expanded", "false");
+		menuPanel.setAttribute("aria-hidden", "true");
+		document.documentElement.classList.remove("menu-open");
+	};
+
+	const openMenu = () => {
+		if (!menuRoot || !menuToggle || !menuPanel) return;
+		menuRoot.classList.add("is-open");
+		menuToggle.setAttribute("aria-expanded", "true");
+		menuPanel.setAttribute("aria-hidden", "false");
+		document.documentElement.classList.add("menu-open");
+	};
+
+	menuToggle?.addEventListener("click", () => {
+		if (menuRoot?.classList.contains("is-open")) closeMenu();
+		else openMenu();
+	});
+
+	menuRoot?.querySelectorAll<HTMLElement>("[data-menu-close]").forEach((element) => {
+		element.addEventListener("click", closeMenu);
+	});
+
+	document.addEventListener("keydown", (event) => {
+		if (event.key === "Escape") closeMenu();
+	});
+</script>
+
+<style>
+	.menu-root {
+		position: fixed;
+		inset: 0;
+		z-index: 1000;
+		visibility: hidden;
+		pointer-events: none;
+	}
+
+	.menu-root.is-open {
+		visibility: visible;
+		pointer-events: auto;
+	}
+
+	.menu-backdrop {
+		position: absolute;
+		inset: 0;
+		background: rgba(4, 5, 10, 0.58);
+		opacity: 0;
+		transition: opacity 450ms ease;
+	}
+
+	.menu-root.is-open .menu-backdrop {
+		opacity: 1;
+	}
+
+	.menu-panel,
+	.menu-panel__aside {
+		position: absolute;
+		top: 0;
+		height: 100%;
+		color: var(--color-secondary);
+	}
+
+	.menu-panel {
+		left: 0;
+		z-index: 2;
+		width: 60%;
+		padding: clamp(2rem, 4vw, 4rem) clamp(2rem, 5.5vw, 5.5rem);
+		background: #09090b;
+		transform: scaleY(0);
+		transform-origin: top center;
+		transition: transform 800ms cubic-bezier(0.77, 0, 0.175, 1);
+	}
+
+	.menu-root.is-open .menu-panel {
+		transform: scaleY(1);
+	}
+
+	.menu-panel__aside {
+		right: 0;
+		z-index: 1;
+		width: 40%;
+		background: #1c1d20;
+		transform: scaleY(0);
+		transform-origin: bottom center;
+		transition: transform 800ms cubic-bezier(0.77, 0, 0.175, 1) 100ms;
+	}
+
+	.menu-root.is-open .menu-panel__aside {
+		transform: scaleY(1);
+	}
+
+	.menu-panel__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.menu-panel__brand {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.7rem;
+		color: var(--color-secondary);
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		text-decoration: none;
+	}
+
+	.menu-panel__mark {
+		display: grid;
+		width: 2rem;
+		aspect-ratio: 1;
+		place-items: center;
+		border: 1px solid rgba(255, 255, 255, 0.28);
+		border-radius: 50%;
+		font-family: var(--font-display);
+		font-size: 1.35rem;
+		line-height: 1;
+	}
+
+	.menu-panel__close {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.8rem;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		color: var(--color-secondary);
+		cursor: pointer;
+		font: inherit;
+		font-size: 0.72rem;
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.menu-panel__close svg {
+		width: 1.6rem;
+		fill: none;
+		stroke: currentColor;
+		stroke-linecap: round;
+		stroke-width: 1.5;
+		transition: transform 180ms ease;
+	}
+
+	.menu-panel__close:hover svg,
+	.menu-panel__close:focus-visible svg {
+		transform: rotate(90deg);
+	}
+
+	.menu-panel__nav {
+		display: grid;
+		gap: clamp(1.4rem, 3vw, 2.7rem);
+		margin-top: clamp(5rem, 13vh, 10rem);
+	}
+
+	.menu-panel__nav a {
+		display: flex;
+		align-items: baseline;
+		gap: 1.2rem;
+		color: #717172;
+		font-size: clamp(2.5rem, 4.2vw, 4.6rem);
+		font-weight: 600;
+		line-height: 0.9;
+		letter-spacing: -0.04em;
+		text-decoration: none;
+		transition: color 180ms ease, transform 180ms ease;
+	}
+
+	.menu-panel__nav a span {
+		min-width: 2.2rem;
+		font-family: var(--font-body);
+		font-size: 0.72rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		color: rgba(255, 255, 255, 0.38);
+	}
+
+	.menu-panel__nav a:hover,
+	.menu-panel__nav a:focus-visible {
+		color: var(--color-secondary);
+		transform: translateX(0.45rem);
+	}
+
+	.menu-panel__aside-inner {
+		display: flex;
+		height: 100%;
+		flex-direction: column;
+		justify-content: center;
+		padding: clamp(2rem, 5vw, 5rem);
+	}
+
+	.menu-panel__aside-label {
+		margin: 0 0 1.5rem;
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.16em;
+		color: rgba(255, 255, 255, 0.45);
+		text-transform: uppercase;
+	}
+
+	.menu-panel__aside-title {
+		max-width: 24rem;
+		margin: 0 0 3rem;
+		font-family: var(--font-display);
+		font-size: clamp(2.7rem, 4.6vw, 5rem);
+		font-weight: 500;
+		line-height: 0.82;
+		letter-spacing: -0.03em;
+	}
+
+	.menu-panel__aside-meta {
+		display: grid;
+		gap: 0.35rem;
+		margin-top: 1.2rem;
+		font-size: 0.82rem;
+	}
+
+	.menu-panel__aside-meta span {
+		color: rgba(255, 255, 255, 0.42);
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+	}
+
+	.menu-panel__aside-meta strong {
+		font-weight: 500;
+		color: rgba(255, 255, 255, 0.86);
+	}
+
+	.menu-panel__aside-cta {
+		display: inline-flex;
+		align-items: center;
+		justify-content: space-between;
+		max-width: 18rem;
+		margin-top: 3rem;
+		padding: 0.9rem 1rem 0.9rem 1.2rem;
+		border: 1px solid rgba(255, 255, 255, 0.3);
+		border-radius: 999px;
+		color: var(--color-secondary);
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.05em;
+		text-decoration: none;
+		text-transform: uppercase;
+		transition: background-color 180ms ease, color 180ms ease;
+	}
+
+	.menu-panel__aside-cta svg {
+		width: 1.1rem;
+		fill: none;
+		stroke: currentColor;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		stroke-width: 1.5;
+	}
+
+	.menu-panel__aside-cta:hover,
+	.menu-panel__aside-cta:focus-visible {
+		background: var(--color-secondary);
+		color: #09090b;
+	}
+
+	:global(html.menu-open),
+	:global(html.menu-open body) {
+		overflow: hidden;
+	}
+
+	@media (max-width: 900px) {
+		.menu-panel {
+			width: 100%;
+		}
+
+		.menu-panel__aside {
+			display: none;
+		}
+
+		.menu-panel__nav a {
+			font-size: clamp(2.3rem, 8vw, 4rem);
+		}
+	}
+
+	@media (max-width: 520px) {
+		.menu-panel {
+			padding: 1.4rem 1rem 2rem;
+		}
+
+		.menu-panel__nav {
+			gap: 1.5rem;
+			margin-top: 4.5rem;
+		}
+
+		.menu-panel__nav a {
+			gap: 0.7rem;
+			font-size: clamp(2rem, 9vw, 3rem);
+		}
+
+		.menu-panel__nav a span {
+			min-width: 1.6rem;
+			font-size: 0.6rem;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.menu-backdrop,
+		.menu-panel,
+		.menu-panel__aside,
+		.menu-panel__close svg,
+		.menu-panel__nav a {
+			transition: none;
+		}
+	}
+</style>

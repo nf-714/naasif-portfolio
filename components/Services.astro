@@ -1,0 +1,259 @@
+---
+const services = [
+	{
+		number: "01",
+		title: "GTM Lead Generation",
+		description:
+			"Research, enrich, qualify, and route opportunities so the team knows who to contact, why they matter, and what should happen next.",
+	},
+	{
+		number: "02",
+		title: "Lead Capture + Qualification",
+		description:
+			"Connect forms, conversations, customer questions, and qualification logic into one owned path.",
+	},
+	{
+		number: "03",
+		title: "GTM + Marketing Operations",
+		description:
+			"Connect positioning, content, lead capture, follow-up, and reporting so growth work does not stay trapped in separate tools.",
+	},
+	{
+		number: "04",
+		title: "AI Automation + Agents",
+		description:
+			"Use AI for repeatable work with context, guardrails, fallbacks, and human review where judgment matters.",
+	},
+	{
+		number: "05",
+		title: "Analytics + Dashboards",
+		description:
+			"Turn pipeline, conversion, and operational data into views that help teams decide what to fix next.",
+	},
+	{
+		number: "06",
+		title: "Web Applications + Internal Tools",
+		description:
+			"Build the applications, interfaces, and internal tools that make a workflow usable in the real world.",
+	},
+];
+---
+
+<section id="services" class="services" aria-labelledby="services-title">
+	<div class="services__inner">
+		<header class="services__header">
+			<div class="services__heading">
+				<p class="services__eyebrow" data-reveal="up">03 / What I build for businesses</p>
+				<h2 id="services-title" data-scroll-text>I build the systems that make important work easier to run.</h2>
+			</div>
+
+			<p class="services__intro" data-reveal="up">
+				If a business process is consuming time, losing context, or creating missed opportunities, I map the
+				workflow and build the useful parts around it.
+			</p>
+		</header>
+
+		<div class="services__grid">
+			{
+				services.map((service, index) => (
+					<article class="service-card" data-reveal="up" style={`--reveal-delay: ${index * 55}ms;`}>
+						<div class="service-card__topline">
+							<span class="service-card__number">{service.number}</span>
+							<svg aria-hidden="true" viewBox="0 0 24 24">
+								<path d="M5 19 19 5M8 5h11v11" />
+							</svg>
+						</div>
+
+						<div class="service-card__content">
+							<h3>{service.title}</h3>
+							<p>{service.description}</p>
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.services {
+		--services-surface: #09090b;
+		--services-ink: var(--color-secondary);
+		--services-muted: rgba(255, 255, 255, 0.58);
+		--services-dim: rgba(255, 255, 255, 0.35);
+		--services-rule: rgba(255, 255, 255, 0.14);
+		padding: clamp(7rem, 10vw, 10rem) 1.5rem;
+		background: var(--services-surface);
+		color: var(--services-ink);
+	}
+
+	.services__inner {
+		width: min(100%, 93rem);
+		margin-inline: auto;
+	}
+
+	.services__header {
+		display: grid;
+		grid-template-columns: minmax(0, 1.65fr) minmax(18rem, 0.7fr);
+		gap: clamp(3rem, 8vw, 9rem);
+		align-items: end;
+		margin-bottom: clamp(4rem, 7vw, 7rem);
+	}
+
+	.services__eyebrow {
+		margin: 0 0 2.2rem;
+		font-size: 0.8rem;
+		font-weight: 600;
+		letter-spacing: 0.14em;
+		color: var(--color-main);
+		text-transform: uppercase;
+	}
+
+	.services__heading h2 {
+		--text-progress: 0;
+		max-width: 67rem;
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: clamp(5.4rem, 10vw, 10.5rem);
+		font-weight: 500;
+		line-height: 0.76;
+		letter-spacing: -0.04em;
+		text-wrap: balance;
+	}
+
+	:global(.motion-ready) .services__heading h2 {
+		background-image: linear-gradient(to right, var(--services-ink) 50%, rgba(255, 255, 255, 0.16) 50%);
+		background-position: calc(100% - var(--text-progress) * 100%) 0;
+		background-size: 200% 100%;
+		background-clip: text;
+		color: transparent;
+		-webkit-background-clip: text;
+	}
+
+	.services__intro {
+		max-width: 27rem;
+		margin: 0 0 0 auto;
+		font-size: clamp(1rem, 1.35vw, 1.2rem);
+		line-height: 1.55;
+		color: var(--services-muted);
+	}
+
+	.services__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		border-top: 1px solid var(--services-rule);
+		border-left: 1px solid var(--services-rule);
+	}
+
+	.service-card {
+		display: flex;
+		min-height: clamp(24rem, 29vw, 31rem);
+		flex-direction: column;
+		padding: clamp(2rem, 3.5vw, 3.5rem);
+		border-right: 1px solid var(--services-rule);
+		border-bottom: 1px solid var(--services-rule);
+	}
+
+	.service-card__topline {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+	}
+
+	.service-card__number {
+		font-size: 0.76rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		color: var(--services-dim);
+	}
+
+	.service-card__topline svg {
+		width: 1.7rem;
+		fill: none;
+		stroke: var(--services-ink);
+		stroke-linecap: square;
+		stroke-linejoin: miter;
+		stroke-width: 1.6;
+		transition: transform 180ms ease, color 180ms ease;
+	}
+
+	.service-card__content {
+		max-width: 28rem;
+		margin-top: auto;
+	}
+
+	.service-card__content h3 {
+		margin: 0 0 1.2rem;
+		font-size: clamp(1.5rem, 2.1vw, 2rem);
+		font-weight: 600;
+		line-height: 1.05;
+		letter-spacing: -0.045em;
+	}
+
+	.service-card__content p {
+		margin: 0;
+		font-size: clamp(1rem, 1.25vw, 1.15rem);
+		line-height: 1.55;
+		color: var(--services-muted);
+	}
+
+	.service-card:hover .service-card__topline svg,
+	.service-card:focus-within .service-card__topline svg {
+		transform: translate(0.2rem, -0.2rem);
+		color: var(--color-main);
+	}
+
+	@media (max-width: 850px) {
+		.services__header {
+			grid-template-columns: minmax(0, 1.5fr) minmax(15rem, 0.8fr);
+			gap: 3rem;
+		}
+
+		.services__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.service-card {
+			min-height: 24rem;
+		}
+	}
+
+	@media (max-width: 620px) {
+		.services {
+			padding: 6rem 1rem;
+		}
+
+		.services__header {
+			grid-template-columns: 1fr;
+			gap: 2.5rem;
+			margin-bottom: 3.5rem;
+		}
+
+		.services__eyebrow {
+			margin-bottom: 1.8rem;
+		}
+
+		.services__heading h2 {
+			font-size: clamp(4.6rem, 20vw, 6.5rem);
+		}
+
+		.services__intro {
+			margin: 0;
+		}
+
+		.services__grid {
+			grid-template-columns: 1fr;
+		}
+
+		.service-card {
+			min-height: 20rem;
+			padding: 2rem;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.service-card__topline svg {
+			transition: none;
+		}
+	}
+</style>

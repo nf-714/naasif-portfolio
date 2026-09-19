@@ -1,1 +1,109 @@
 @import "tailwindcss";
+
+@font-face {
+	font-family: "Clash Display";
+	src: url("/assets/fonts/ClashDisplay-Regular.woff2") format("woff2");
+	font-display: swap;
+	font-style: normal;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: "Clash Display";
+	src: url("/assets/fonts/ClashDisplay-Semibold.woff2") format("woff2");
+	font-display: swap;
+	font-style: normal;
+	font-weight: 600;
+}
+
+@font-face {
+	font-family: "Mango Grotesque";
+	src: url("/assets/fonts/MangoGrotesque-Medium.woff2") format("woff2");
+	font-display: swap;
+	font-style: normal;
+	font-weight: 500;
+}
+
+:root {
+	--color-main: #173BFF;
+	--color-secondary: oklch(97.7% 0.013 236.62);
+	--background-main: #02040A;
+	--background-secondary: oklch(18.1% 0.146 265.522);
+	/* Reference typography: Avenir Next, matching the Scalaar-style site. */
+	--font-body: "Avenir Next", Avenir, "Segoe UI", Helvetica, Arial, sans-serif;
+	--font-display: "Avenir Next", Avenir, "Segoe UI", Helvetica, Arial, sans-serif;
+	font-family: var(--font-body);
+	font-synthesis: none;
+	color-scheme: dark;
+	background: var(--background-secondary);
+	text-rendering: optimizeLegibility;
+}
+
+/* Set data-font-theme="legacy" on <html> to restore the previous type system. */
+html[data-font-theme="legacy"] {
+	--font-body: "Clash Display", sans-serif;
+	--font-display: "Mango Grotesque", sans-serif;
+}
+
+html {
+	scroll-behavior: auto;
+	background: var(--background-secondary);
+}
+
+body {
+	min-width: 20rem;
+	margin: 0;
+	background: var(--background-secondary);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+img,
+svg {
+	display: block;
+}
+
+a:focus-visible {
+	outline: 2px solid var(--color-main);
+	outline-offset: 3px;
+	box-shadow: 0 0 0 5px var(--color-secondary);
+}
+
+.motion-ready [data-reveal] {
+	opacity: 0;
+	transform: translate3d(0, var(--reveal-distance, 2.5rem), 0);
+	transition:
+		opacity var(--reveal-duration, 700ms) cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+		transform var(--reveal-duration, 700ms) cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+	will-change: opacity, transform;
+}
+
+.motion-ready [data-reveal="left"] {
+	transform: translate3d(calc(var(--reveal-distance, 2.5rem) * -1), 0, 0);
+}
+
+.motion-ready [data-reveal="right"] {
+	transform: translate3d(var(--reveal-distance, 2.5rem), 0, 0);
+}
+
+.motion-ready [data-reveal].is-visible {
+	opacity: 1;
+	transform: translate3d(0, 0, 0);
+	will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	[data-reveal] {
+		opacity: 1 !important;
+		transform: none !important;
+		transition: none !important;
+	}
+}

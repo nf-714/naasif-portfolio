@@ -1,0 +1,156 @@
+---
+const items = [
+	{ index: "01", label: "AI engineering" },
+	{ index: "02", label: "GTM + growth" },
+	{ index: "03", label: "Business analytics" },
+	{ index: "04", label: "Human-in-the-loop" },
+	{ index: "05", label: "Dhaka / Worldwide" },
+];
+
+const loopItems = [...items, ...items];
+---
+
+<section id="profile" class="profile" aria-label="Profile highlights">
+	<img
+		class="profile__hand profile__hand--left"
+		src="/assets/images/marquee-hand-left.png"
+		alt=""
+		width="219"
+		height="210"
+		loading="eager"
+	/>
+
+	<div class="profile__viewport">
+		<div class="profile__track">
+			{
+				loopItems.map((item, index) => (
+					<div class="profile__item" aria-hidden={index >= items.length ? "true" : undefined}>
+						<p><i>{item.index} /</i> {item.label}</p>
+						<svg aria-hidden="true" viewBox="0 0 31 30">
+							<path d="M16.38 0h-2.14v12.41L5.46 3.64 3.95 5.15l8.78 8.78H.31v2.14h12.42l-8.78 8.78 1.51 1.51 8.78-8.77V30h2.14V17.59l8.78 8.77 1.52-1.51-8.78-8.78h12.41v-2.14H17.9l8.78-8.78-1.52-1.51-8.78 8.77V0Z"></path>
+						</svg>
+					</div>
+				))
+			}
+		</div>
+	</div>
+
+	<img
+		class="profile__hand profile__hand--right"
+		src="/assets/images/marquee-hand-right.png"
+		alt=""
+		width="299"
+		height="206"
+		loading="eager"
+	/>
+</section>
+
+<style>
+	.profile {
+		position: relative;
+		z-index: 5;
+		min-height: 6.35rem;
+		background: var(--color-main);
+		color: var(--color-secondary);
+	}
+
+	.profile__viewport {
+		overflow: hidden;
+	}
+
+	.profile__track {
+		display: flex;
+		width: max-content;
+		padding-block: 1.85rem 1.4rem;
+		animation: marquee 28s linear infinite;
+		will-change: transform;
+	}
+
+	.profile__item {
+		display: flex;
+		flex: 0 0 auto;
+		align-items: center;
+		gap: 2.6rem;
+		padding-right: 2.6rem;
+	}
+
+	.profile__item p {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: clamp(2.2rem, 3vw, 3rem);
+		font-weight: 500;
+		line-height: 1;
+		white-space: nowrap;
+	}
+
+	.profile__item i {
+		font-style: normal;
+	}
+
+	.profile__item svg {
+		width: 1.8rem;
+		height: 1.8rem;
+		fill: currentColor;
+	}
+
+	.profile__hand {
+		position: absolute;
+		z-index: 3;
+		display: block;
+		width: auto;
+		pointer-events: none;
+		user-select: none;
+		filter: grayscale(1) drop-shadow(0 1rem 1rem rgba(13, 27, 42, 0.2));
+	}
+
+	.profile__hand--left {
+		top: 4.8rem;
+		left: 12%;
+		height: 10.7rem;
+	}
+
+	.profile__hand--right {
+		top: 4.8rem;
+		right: 8%;
+		height: 10.4rem;
+	}
+
+	@keyframes marquee {
+		to { transform: translateX(-50%); }
+	}
+
+	@media (max-width: 720px) {
+		.profile {
+			min-height: 5rem;
+		}
+
+		.profile__track {
+			padding-block: 1.35rem 1rem;
+			animation-duration: 23s;
+		}
+
+		.profile__item {
+			gap: 1.35rem;
+			padding-right: 1.35rem;
+		}
+
+		.profile__item p {
+			font-size: 2rem;
+		}
+
+		.profile__item svg {
+			width: 1.4rem;
+			height: 1.4rem;
+		}
+
+		.profile__hand {
+			display: none;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.profile__track {
+			animation-play-state: paused;
+		}
+	}
+</style>

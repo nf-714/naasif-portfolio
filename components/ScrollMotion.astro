@@ -1,0 +1,85 @@
+<script>
+	import Lenis from "lenis";
+	import "lenis/dist/lenis.css";
+
+	const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+	const easeOutExpo = (progress: number) => Math.min(1, 1.001 - Math.pow(2, -10 * progress));
+
+	const lenis = new Lenis({
+		autoRaf: true,
+		duration: 1.05,
+		easing: easeOutExpo,
+		smoothWheel: true,
+		wheelMultiplier: 0.9,
+		touchMultiplier: 1,
+		anchors: {
+			duration: 1.05,
+			easing: easeOutExpo,
+		},
+		stopInertiaOnNavigate: true,
+		respectReducedMotion: true,
+	});
+
+	const root = document.documentElement;
+	root.classList.add("lenis-ready");
+
+	if (!reducedMotion) {
+		root.classList.add("motion-ready");
+
+		const revealItems = document.querySelectorAll<HTMLElement>("[data-reveal]");
+		const revealObserver = new IntersectionObserver(
+			(entries, observer) => {
+				for (const entry of entries) {
+					if (!entry.isIntersecting) continue;
+					(entry.target as HTMLElement).classList.add("is-visible");
+					observer.unobserve(entry.target);
+				}
+			},
+			{ rootMargin: "0px 0px -10%", threshold: 0.12 },
+		);
+
+		revealItems.forEach((item) => revealObserver.observe(item));
+
+		const scrollText = [...document.querySelectorAll<HTMLElement>("[data-scroll-text]")];
+		const scrollMotionSections = [
+			...document.querySelectorAll<HTMLElement>("[data-scroll-motion]"),
+		];
+		let frame = 0;
+
+		const updateScrollText = () => {
+			frame = 0;
+			const viewportHeight = window.innerHeight;
+
+			for (const item of scrollText) {
+				const rect = item.getBoundingClientRect();
+				const start = viewportHeight * 0.88;
+				const finish = viewportHeight * 0.5 - rect.height;
+				const progress = Math.min(1, Math.max(0, (start - rect.top) / (start - finish)));
+				item.style.setProperty("--text-progress", progress.toFixed(3));
+			}
+
+			for (const section of scrollMotionSections) {
+				const rect = section.getBoundingClientRect();
+				const progress = Math.min(
+					1,
+					Math.max(0, (viewportHeight - rect.top) / (viewportHeight + rect.height)),
+				);
+				const shift = (progress - 0.5) * -72;
+				section.style.setProperty("--scroll-shift-y", `${shift.toFixed(1)}px`);
+			}
+		};
+
+		const requestUpdate = () => {
+			if (frame) return;
+			frame = window.requestAnimationFrame(updateScrollText);
+		};
+
+		lenis.on("scroll", (state) => {
+			root.style.setProperty("--page-scroll-progress", state.progress.toFixed(4));
+			root.style.setProperty("--page-scroll-velocity", Math.abs(state.velocity).toFixed(3));
+			requestUpdate();
+		});
+		window.addEventListener("resize", requestUpdate, { passive: true });
+		updateScrollText();
+	}
+</script>

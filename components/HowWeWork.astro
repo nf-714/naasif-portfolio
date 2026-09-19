@@ -1,0 +1,199 @@
+---
+const steps = [
+	{
+		number: "01",
+		title: "Understand",
+		body: "Learn the business context, data, people, tools, and constraints.",
+	},
+	{
+		number: "02",
+		title: "Find the signal",
+		body: "Identify what is slowing the decision, workflow, or next action.",
+	},
+	{
+		number: "03",
+		title: "Build",
+		body: "Create the smallest useful combination of code, AI, analytics, and human review.",
+	},
+	{
+		number: "04",
+		title: "Learn",
+		body: "Put the work into use, observe what happens, and improve the next version.",
+	},
+];
+---
+
+<section id="process" class="process" aria-labelledby="process-title">
+	<div class="process__inner">
+		<div class="process__heading" data-reveal="left">
+			<p><i></i> 05 / How I work</p>
+			<h2 id="process-title">I start with the problem, then choose the system.</h2>
+		</div>
+
+		<div class="process__steps">
+			{
+				steps.map((step, index) => (
+					<article
+						class="process__card"
+						style={`--card-index: ${index}; --reveal-delay: ${index * 55}ms;`}
+						data-reveal="up"
+					>
+						<span class="process__number" aria-hidden="true">{step.number}</span>
+						<h3>{step.title}</h3>
+						<p>{step.body}</p>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.process {
+		--process-surface: #09090b;
+		--process-card: #111114;
+		--process-card-alt: #0d0d10;
+		--process-ink: var(--color-secondary);
+		--process-muted: rgba(255, 255, 255, 0.72);
+		--process-rule: rgba(255, 255, 255, 0.14);
+		padding: clamp(6.5rem, 10vw, 10rem) 1.5rem;
+		background: var(--process-surface);
+		color: var(--process-ink);
+	}
+
+	.process__inner {
+		display: grid;
+		grid-template-columns: minmax(20rem, 1fr) minmax(28rem, 1.05fr);
+		gap: clamp(3rem, 8vw, 8rem);
+		width: min(100%, 84.5rem);
+		margin-inline: auto;
+	}
+
+	.process__heading {
+		position: sticky;
+		top: 2rem;
+		align-self: start;
+	}
+
+	.process__heading > p {
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+		margin: 0 0 1.6rem;
+		font-size: 0.8rem;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.process__heading > p i {
+		width: 0.48rem;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		background: var(--color-main);
+	}
+
+	.process__heading h2 {
+		max-width: 35rem;
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: clamp(5rem, 8.5vw, 8.6rem);
+		font-weight: 500;
+		line-height: 0.73;
+		letter-spacing: -0.03em;
+	}
+
+	.process__steps {
+		position: relative;
+		display: grid;
+		gap: 0.85rem;
+	}
+
+	.process__card {
+		position: sticky;
+		top: calc(5rem + var(--card-index) * 1.15rem);
+		z-index: calc(2 + var(--card-index));
+		padding: clamp(2.3rem, 4vw, 3.4rem);
+		border: 1px solid var(--process-rule);
+		background: var(--process-card);
+		box-shadow: 0 -1.2rem 2.8rem rgba(0, 0, 0, 0.28);
+		transition: transform 220ms ease, background-color 220ms ease;
+	}
+
+	.process__card:nth-child(even) {
+		background: var(--process-card-alt);
+	}
+
+	.process__card:hover {
+		transform: translateX(-0.45rem);
+		background: #15151a;
+	}
+
+	.process__number {
+		display: inline-block;
+		margin-bottom: 2.25rem;
+		font-family: var(--font-body);
+		font-size: clamp(4.5rem, 6vw, 6rem);
+		font-weight: 1900;
+		line-height: 0.8;
+		letter-spacing: -0.035em;
+		color: var(--color-main);
+	}
+
+	.process__card h3 {
+		margin: 0 0 0.8rem;
+		font-size: clamp(1.55rem, 2.3vw, 2rem);
+		font-weight: 600;
+		letter-spacing: -0.04em;
+		text-transform: uppercase;
+	}
+
+	.process__card > p {
+		max-width: 33rem;
+		margin: 0;
+		font-size: 1rem;
+		line-height: 1.55;
+		color: var(--process-muted);
+	}
+
+	@media (max-width: 850px) {
+		.process__inner {
+			grid-template-columns: 1fr;
+		}
+
+		.process__heading {
+			position: static;
+		}
+
+		.process__card {
+			position: relative;
+			top: auto;
+		}
+
+		.process__heading h2 {
+			max-width: 42rem;
+		}
+	}
+
+	@media (max-width: 620px) {
+		.process {
+			padding: 6rem 1rem;
+		}
+
+		.process__inner {
+			gap: 3rem;
+		}
+
+		.process__heading h2 {
+			font-size: clamp(4.6rem, 22vw, 6rem);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.process__card {
+			position: relative;
+			top: auto;
+			transition: none;
+		}
+	}
+</style>

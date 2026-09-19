@@ -1,0 +1,145 @@
+<section id="start-project" class="project-cta" aria-labelledby="project-cta-title">
+	<div class="project-cta__inner">
+		<p class="project-cta__lead" data-reveal="up">Hiring for a hybrid builder or fixing a workflow?</p>
+
+		<h2 id="project-cta-title" data-reveal="up" style="--reveal-delay: 70ms; --reveal-distance: 3rem;">
+			<span>Connect data, growth</span><br />
+			<span>and execution.</span>
+		</h2>
+
+		<a
+			class="project-cta__link"
+			href="mailto:nasif.fuad.arif@gmail.com"
+			data-reveal="up"
+			style="--reveal-delay: 150ms;"
+		>
+			<span>nasif.fuad.arif@gmail.com</span>
+			<i aria-hidden="true">
+				<svg viewBox="0 0 14 14">
+					<path d="M2 12 12 2M12 2H3m9 0v9" />
+				</svg>
+			</i>
+		</a>
+	</div>
+</section>
+
+<style>
+	.project-cta {
+		display: grid;
+		min-height: clamp(44rem, 92svh, 58rem);
+		place-items: center;
+		padding: clamp(7rem, 10vw, 10rem) 1.5rem;
+		background: var(--color-main);
+		color: var(--color-secondary);
+		text-align: center;
+	}
+
+	.project-cta__inner {
+		width: min(100%, 90rem);
+	}
+
+	.project-cta__lead {
+		margin: 0 0 clamp(2.2rem, 4vw, 3.4rem);
+		font-size: clamp(0.7rem, 0.9vw, 0.82rem);
+		font-weight: 600;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+	}
+
+	.project-cta h2 {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: clamp(6rem, 11.2vw, 10.5rem);
+		font-weight: 500;
+		line-height: 0.72;
+		letter-spacing: -0.03em;
+		text-wrap: balance;
+	}
+
+	.project-cta__link {
+		display: inline-flex;
+		align-items: center;
+		gap: 1rem;
+		margin-top: clamp(3rem, 5vw, 4.5rem);
+		padding: 0.62rem 0.68rem 0.62rem 1.45rem;
+		border-radius: 999px;
+		background: #09090b;
+		color: var(--color-secondary);
+		font-size: 0.82rem;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+		text-decoration: none;
+		transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+	}
+
+	.project-cta__link i {
+		display: grid;
+		width: 2.45rem;
+		aspect-ratio: 1;
+		place-items: center;
+		border-radius: 50%;
+		background: var(--color-main);
+		color: var(--color-secondary);
+		transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+	}
+
+	.project-cta__link svg {
+		width: 0.78rem;
+		fill: none;
+		stroke: currentColor;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		stroke-width: 1.5;
+	}
+
+	.project-cta__link:hover,
+	.project-cta__link:focus-visible {
+		background: var(--color-secondary);
+		color: #09090b;
+		transform: translateY(-0.18rem);
+	}
+
+	.project-cta__link:focus-visible {
+		outline-color: var(--color-secondary);
+		box-shadow: none;
+	}
+
+	.project-cta__link:hover i,
+	.project-cta__link:focus-visible i {
+		background: #09090b;
+		color: var(--color-secondary);
+		transform: rotate(45deg);
+	}
+
+	@media (max-width: 680px) {
+		.project-cta {
+			min-height: 42rem;
+			padding: 6.5rem 1rem;
+		}
+
+		.project-cta__lead {
+			max-width: 20rem;
+			margin-inline: auto;
+			line-height: 1.5;
+		}
+
+		.project-cta h2 {
+			font-size: clamp(4.5rem, 21vw, 6rem);
+			line-height: 0.76;
+		}
+
+		.project-cta__link {
+			margin-top: 3.25rem;
+			gap: 0.65rem;
+			padding-left: 1rem;
+			font-size: 0.72rem;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.project-cta__link,
+		.project-cta__link i {
+			transition: none;
+		}
+	}
+</style>

@@ -1,0 +1,187 @@
+---
+const focusAreas = [
+	{
+		number: "01",
+		title: "Machine Learning + NLP Experiments",
+		description:
+			"Exploring prediction, classification, deep learning, and NLP through practical builds.",
+	},
+	{
+		number: "02",
+		title: "AI Automation Systems",
+		description: "Building useful workflows with agents, integrations, guardrails, and human review.",
+	},
+	{
+		number: "03",
+		title: "GTM Lead Generation Tools",
+		description: "Developing tools for lead discovery, research, qualification, and focused prospecting.",
+	},
+	{
+		number: "04",
+		title: "Sales Workflow Software",
+		description: "Building software that helps teams see the next action in the pipeline.",
+	},
+	{
+		number: "05",
+		title: "AI Product Experiments",
+		description: "Testing product ideas where ads, leads, data, and follow-up meet.",
+	},
+];
+---
+
+<section id="building-now" class="focus" aria-labelledby="focus-title">
+	<div class="focus__inner">
+		<header class="focus__header">
+			<p class="focus__marker" data-reveal="up"><span>06 /</span> Current projects</p>
+			<h2 id="focus-title" data-reveal="up">What I am exploring now.</h2>
+		</header>
+
+		<div class="focus__list">
+			{
+				focusAreas.map((area, index) => (
+					<article
+						class="focus__row"
+						data-reveal="up"
+						style={`--reveal-delay: ${index * 60}ms;`}
+					>
+						<span class="focus__number" aria-hidden="true">{area.number}</span>
+						<div>
+							<h3>{area.title}</h3>
+							<p>{area.description}</p>
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.focus {
+		--focus-ink: var(--color-secondary);
+		--focus-muted: rgba(255, 255, 255, 0.68);
+		--focus-rule: rgba(255, 255, 255, 0.16);
+		padding: clamp(6.5rem, 10vw, 10rem) 1.5rem;
+		background: #09090b;
+		color: var(--focus-ink);
+	}
+
+	.focus__inner {
+		width: min(100%, 93rem);
+		margin-inline: auto;
+	}
+
+	.focus__header {
+		display: grid;
+		grid-template-columns: minmax(12rem, 0.85fr) minmax(0, 2fr);
+		gap: clamp(2rem, 6vw, 7rem);
+		align-items: start;
+		margin-bottom: clamp(3.5rem, 6vw, 5.5rem);
+	}
+
+	.focus__marker {
+		margin: 0;
+		padding-top: 0.7rem;
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.16em;
+		color: rgba(255, 255, 255, 0.46);
+		text-transform: uppercase;
+	}
+
+	.focus__marker span,
+	.focus__number {
+		color: var(--color-main);
+	}
+
+	.focus__header h2 {
+		max-width: 46rem;
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: clamp(4.6rem, 7vw, 6rem);
+		font-weight: 500;
+		line-height: 0.82;
+		letter-spacing: -0.03em;
+		text-wrap: balance;
+	}
+
+	.focus__list {
+		border-top: 1px solid var(--focus-rule);
+	}
+
+	.focus__row {
+		display: grid;
+		grid-template-columns: minmax(4rem, 0.3fr) minmax(0, 2fr);
+		gap: clamp(1.5rem, 4vw, 4rem);
+		align-items: start;
+		padding: clamp(2rem, 3.5vw, 3.25rem) 0;
+		border-bottom: 1px solid var(--focus-rule);
+	}
+
+	.focus__number {
+		font-family: var(--font-display);
+		font-size: clamp(3.25rem, 5vw, 5rem);
+		font-weight: 500;
+		font-variant-numeric: tabular-nums;
+		line-height: 0.76;
+		letter-spacing: -0.025em;
+	}
+
+	.focus__row > div {
+		display: grid;
+		grid-template-columns: minmax(12rem, 0.85fr) minmax(18rem, 1.25fr);
+		gap: clamp(1.5rem, 5vw, 5rem);
+		align-items: start;
+	}
+
+	.focus__row h3 {
+		margin: 0;
+		font-size: clamp(1.35rem, 2vw, 1.8rem);
+		font-weight: 600;
+		line-height: 1.08;
+		letter-spacing: -0.03em;
+	}
+
+	.focus__row p {
+		max-width: 36rem;
+		margin: 0;
+		font-size: clamp(1rem, 1.2vw, 1.12rem);
+		line-height: 1.55;
+		color: var(--focus-muted);
+	}
+
+	@media (max-width: 760px) {
+		.focus__header {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+		}
+
+		.focus__marker {
+			padding-top: 0;
+		}
+
+		.focus__header h2 {
+			font-size: clamp(4.3rem, 19vw, 5.8rem);
+		}
+
+		.focus__row {
+			grid-template-columns: 3.5rem minmax(0, 1fr);
+			gap: 1rem;
+		}
+
+		.focus__number {
+			font-size: 3.25rem;
+		}
+
+		.focus__row > div {
+			grid-template-columns: 1fr;
+			gap: 0.75rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.focus {
+			padding: 6rem 1rem;
+		}
+	}
+</style>

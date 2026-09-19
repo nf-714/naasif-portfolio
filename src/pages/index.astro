@@ -1,17 +1,48 @@
 ---
-
+import Hero from "../../components/Hero.astro";
+import MenuPanel from "../../components/MenuPanel.astro";
+import ProfileMarquee from "../../components/ProfileMarquee.astro";
+import About from "../../components/About.astro";
+import CurrentFocus from "../../components/CurrentFocus.astro";
+import Services from "../../components/Services.astro";
+import SelectedSystems from "../../components/SelectedSystems.astro";
+import Skills from "../../components/Skills.astro";
+import Consulting from "../../components/Consulting.astro";
+import HowWeWork from "../../components/HowWeWork.astro";
+import CallToAction from "../../components/CallToAction.astro";
+import Footer from "../../components/Footer.astro";
+import ScrollMotion from "../../components/ScrollMotion.astro";
+import "../styles/global.css";
 ---
 
-<html lang="en">
+<html lang="en" data-font-theme="legacy">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<meta
+			name="description"
+			content="Nasif Fuad is an AI Engineer and growth systems operator working across AI engineering, GTM execution, business development, marketing operations, and business analytics."
+		/>
+		<title>Nasif Fuad - AI Engineer, GTM Operator, and Business Analytics Builder</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<main>
+			<Hero />
+			<MenuPanel />
+			<ProfileMarquee />
+			<About />
+			<SelectedSystems />
+			<Skills />
+			<Services />
+			<Consulting />
+			<HowWeWork />
+			<CurrentFocus />
+			<CallToAction />
+		</main>
+		<Footer />
+		<ScrollMotion />
 	</body>
 </html>
