@@ -1,0 +1,19 @@
+Use case: ui-mockup
+
+Asset type: premium portfolio website section reference, desktop 16:9.
+
+Primary request: Design a single full-width “What I’m building now” section for Nasif Fuad’s dark personal portfolio. It will appear directly after the About section. Show five current-focus items as a flat editorial system, not as rounded cards.
+
+Scene/backdrop: near-black #09090B background with thin warm-white divider rules and electric cobalt #173BFF accents.
+
+Style/medium: high-fidelity shippable web UI mockup, Swiss editorial grid, premium creative-technology portfolio, compressed characterful display typography for the main statement and restrained grotesk typography for body copy.
+
+Composition/framing: one section only. A narrow left rail carries the small sequence label “01 / BUILDING NOW”. The main area starts with the large statement “Five bets I’m building into real systems.” Below it are five spacious horizontal rows separated by hairline rules. Each row has a large cobalt index 01–05, a concise title, and a one-sentence description. Use generous negative space and decisive hierarchy.
+
+Render these titles verbatim: “MACHINE LEARNING”, “AI AUTOMATION AGENCY”, “GTM LEAD GEN + SEARCH”, “SALES SAAS”, “FILO AI”.
+
+Motion implied by composition: staggered row reveal and a subtle horizontal line sweep.
+
+Output intent: implementation-ready visual reference for an Astro website component; crisp desktop layout, readable typography, exact hierarchy and spacing.
+
+Constraints: no gradients, no glassmorphism, no browser chrome, no decorative dashboards, no nested boxes, no rounded cards, no pills, no icons, no stock photography, no watermark, no extra sections, no tiny illegible UI.

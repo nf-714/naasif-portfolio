@@ -1,0 +1,8 @@
+Use case: ui-mockup
+Asset type: standalone full-width call-to-action section for an existing creative developer portfolio
+Input image: user-provided lime CTA screenshot used only as a composition, scale, spacing, and hierarchy reference
+Primary request: reinterpret the CTA for Naasif-site as a full electric-cobalt field after the dark How We Work section and before the footer
+Composition: wide desktop section near one viewport tall; centered small uppercase lead-in, enormous three-line compressed-display headline, and one primary capsule CTA with a circular arrow area
+Color palette: #173BFF background, near-white type, #09090b button
+Text: "YOUR NEXT BOTTLENECK IS ALREADY COSTING YOU"; "Let’s build the system that removes it."; "Book a strategy call"
+Constraints: no navigation, footer, imagery, extra labels, logos, watermark, lime, gradients, glassmorphism, glow, cards, dashboard styling, purple, or decorative clutter
