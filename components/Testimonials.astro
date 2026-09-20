@@ -1,0 +1,372 @@
+---
+const testimonials = [
+	{
+		name: "Shah Alam",
+		image: "/assets/images/testimonials/shah-alam.jpg",
+		alt: "Shah Alam",
+		role: "CTO, Tork",
+		linkedin: "https://www.linkedin.com/in/shahshaikat/",
+		body: "Nasif brought a practical growth mindset to Tork. He supported our business development work while strengthening how we presented the brand across LinkedIn and Facebook.",
+	},
+	{
+		name: "Mahathir Md Al Reza",
+		image: "/assets/images/testimonials/mahathir-md-al-reza.jpg",
+		alt: "Mahathir Md Al Reza",
+		role: "First manager",
+		linkedin: "https://www.linkedin.com/in/mahathirmdalreza/",
+		body: "I worked with Nasif at the beginning of his career as a marketing intern. He was curious, dependable, and eager to turn feedback into better work.",
+	},
+	{
+		name: "Mustafa Hasan Walid",
+		image: "/assets/images/testimonials/mustafa-hasan-walid.jpg",
+		alt: "Mustafa Hasan Walid",
+		role: "Business development",
+		linkedin: "https://www.linkedin.com/in/mustafa-hasan-walid-4b4a5924b/",
+		body: "Nasif was a thoughtful partner in our business development work. He combined initiative with a clear understanding of what needed to move forward next.",
+	},
+	{
+		name: "Taher Ahmed",
+		image: "/assets/images/testimonials/taher-ahmed.jpg",
+		alt: "Taher Ahmed",
+		role: "Web design + SEO",
+		linkedin: "https://www.linkedin.com/in/mrsheikhtaher/",
+		body: "Working alongside Nasif on website design and SEO was smooth and collaborative. He cared about both the quality of the experience and how people would find it.",
+	},
+];
+---
+
+<section id="testimonials" class="testimonials" aria-labelledby="testimonials-title">
+	<div class="testimonials__inner">
+		<header class="testimonials__header">
+			<p class="testimonials__marker" data-reveal="up"><span>06 /</span> Testimonial</p>
+			<div>
+				<h2 id="testimonials-title" data-reveal="up">Good work travels through people.</h2>
+				<p class="testimonials__intro" data-reveal="up">
+					A few of the people and teams I have worked alongside across marketing, growth, and digital systems.
+				</p>
+			</div>
+		</header>
+
+		<div class="testimonials__slider" data-testimonial-slider>
+			<div class="testimonials__viewport" aria-live="polite">
+				<div class="testimonials__track">
+					{
+						testimonials.map((testimonial, index) => (
+							<article class="testimonial" data-testimonial-slide={index} aria-hidden={index === 0 ? "false" : "true"}>
+								<div class="testimonial__portrait">
+									<img
+										src={testimonial.image}
+										alt={testimonial.alt}
+										width="800"
+										height="800"
+										loading={index === 0 ? "eager" : "lazy"}
+										decoding="async"
+									/>
+								</div>
+								<div class="testimonial__content">
+									<span class="testimonial__index">0{index + 1}</span>
+									<p class="testimonial__context">{testimonial.role}</p>
+									<p class="testimonial__body">{testimonial.body}</p>
+									<h3>
+										{testimonial.name}
+										<a class="testimonial__linkedin" href={testimonial.linkedin} target="_blank" rel="noreferrer" aria-label={`View ${testimonial.name} on LinkedIn`}>
+											<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5.2 7.1A2.1 2.1 0 1 0 5.2 2.9a2.1 2.1 0 0 0 0 4.2ZM3.4 21h3.6V9.2H3.4V21ZM9.2 9.2V21h3.6v-6.3c0-1.7.3-3.3 2.4-3.3 2 0 2 1.9 2 3.4V21h3.6v-6.9c0-3.4-.7-6-4.7-6-1.9 0-3.2 1-3.8 2h-.1V9.2H9.2Z" /></svg>
+										</a>
+									</h3>
+								</div>
+							</article>
+						))
+					}
+				</div>
+			</div>
+
+			<div class="testimonials__controls">
+				<div class="testimonials__counter" aria-hidden="true">
+					<span data-testimonial-current>01</span><i></i><span>04</span>
+				</div>
+				<div class="testimonials__actions">
+					<button type="button" class="testimonials__arrow" data-testimonial-prev aria-label="Previous testimonial">←</button>
+					<div class="testimonials__dots" role="tablist" aria-label="Choose testimonial">
+						{testimonials.map((testimonial, index) => (
+							<button
+								type="button"
+								class="testimonials__dot"
+								role="tab"
+								aria-label={`Show ${testimonial.name}`}
+								aria-selected={index === 0 ? "true" : "false"}
+								data-testimonial-dot={index}
+							></button>
+						))}
+					</div>
+					<button type="button" class="testimonials__arrow" data-testimonial-next aria-label="Next testimonial">→</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	const slider = document.querySelector<HTMLElement>("[data-testimonial-slider]");
+
+	if (slider) {
+		const track = slider.querySelector<HTMLElement>(".testimonials__track");
+		const slides = [...slider.querySelectorAll<HTMLElement>("[data-testimonial-slide]")];
+		const dots = [...slider.querySelectorAll<HTMLButtonElement>("[data-testimonial-dot]")];
+		const current = slider.querySelector<HTMLElement>("[data-testimonial-current]");
+		const previous = slider.querySelector<HTMLButtonElement>("[data-testimonial-prev]");
+		const next = slider.querySelector<HTMLButtonElement>("[data-testimonial-next]");
+		const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+		let activeIndex = 0;
+		let intervalId: number | undefined;
+
+		const showSlide = (index: number) => {
+			activeIndex = (index + slides.length) % slides.length;
+			if (track) track.style.transform = `translateX(-${activeIndex * 100}%)`;
+			slides.forEach((slide, slideIndex) => slide.setAttribute("aria-hidden", String(slideIndex !== activeIndex)));
+			dots.forEach((dot, dotIndex) => dot.setAttribute("aria-selected", String(dotIndex === activeIndex)));
+			if (current) current.textContent = String(activeIndex + 1).padStart(2, "0");
+		};
+
+		const stopAutoPlay = () => {
+			if (intervalId !== undefined) window.clearInterval(intervalId);
+			intervalId = undefined;
+		};
+
+		const startAutoPlay = () => {
+			if (reducedMotion.matches) return;
+			stopAutoPlay();
+			intervalId = window.setInterval(() => showSlide(activeIndex + 1), 5500);
+		};
+
+		previous?.addEventListener("click", () => { showSlide(activeIndex - 1); startAutoPlay(); });
+		next?.addEventListener("click", () => { showSlide(activeIndex + 1); startAutoPlay(); });
+		dots.forEach((dot, index) => dot.addEventListener("click", () => { showSlide(index); startAutoPlay(); }));
+		slider.addEventListener("mouseenter", stopAutoPlay);
+		slider.addEventListener("mouseleave", startAutoPlay);
+		slider.addEventListener("focusin", stopAutoPlay);
+		slider.addEventListener("focusout", (event) => {
+			if (!slider.contains(event.relatedTarget as Node)) startAutoPlay();
+		});
+		showSlide(0);
+		startAutoPlay();
+	}
+</script>
+
+<style>
+	.testimonials {
+		padding: clamp(7rem, 10vw, 10rem) 1.5rem;
+		background: var(--color-surface);
+		color: var(--color-ink);
+	}
+
+	.testimonials__inner {
+		width: min(100%, 93rem);
+		margin-inline: auto;
+	}
+
+	.testimonials__header {
+		display: grid;
+		grid-template-columns: minmax(12rem, 0.85fr) minmax(0, 2fr);
+		gap: clamp(2rem, 6vw, 7rem);
+		align-items: start;
+		margin-bottom: clamp(4rem, 7vw, 6.5rem);
+	}
+
+	.testimonials__marker {
+		margin: 0;
+		padding-top: 0.75rem;
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.16em;
+		color: var(--color-dim);
+		text-transform: uppercase;
+	}
+
+	.testimonials__marker span { color: var(--color-main); }
+
+	.testimonials__header h2 {
+		max-width: 45rem;
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: clamp(4.8rem, 7.5vw, 6rem);
+		font-weight: 500;
+		line-height: 0.82;
+		letter-spacing: -0.03em;
+		text-wrap: balance;
+	}
+
+	.testimonials__intro {
+		max-width: 34rem;
+		margin: 2rem 0 0;
+		font-size: clamp(1rem, 1.25vw, 1.12rem);
+		line-height: 1.6;
+		color: var(--color-muted);
+	}
+
+	.testimonials__slider {
+		border-top: 1px solid var(--color-rule);
+		border-bottom: 1px solid var(--color-rule);
+	}
+
+	.testimonials__viewport { overflow: hidden; }
+
+	.testimonials__track {
+		display: flex;
+		transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	.testimonial {
+		display: grid;
+		grid-template-columns: minmax(16rem, 0.72fr) minmax(0, 1.28fr);
+		flex: 0 0 100%;
+		min-width: 0;
+	}
+
+	.testimonial__portrait {
+		aspect-ratio: 1 / 1;
+		max-height: 32rem;
+		overflow: hidden;
+		background: var(--color-surface-alt);
+	}
+
+	.testimonial__portrait img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.testimonial__content {
+		display: flex;
+		min-height: 25rem;
+		flex-direction: column;
+		align-items: flex-start;
+		padding: clamp(2rem, 5vw, 5rem);
+	}
+
+	.testimonial__index {
+		font-family: var(--font-display);
+		font-size: clamp(3.5rem, 6vw, 6rem);
+		line-height: 0.75;
+		letter-spacing: -0.03em;
+		color: var(--color-main);
+	}
+
+	.testimonial__context {
+		margin: auto 0 1.25rem;
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		color: var(--color-dim);
+		text-transform: uppercase;
+	}
+
+	.testimonial__body {
+		max-width: 38rem;
+		margin: 0;
+		font-size: clamp(1.35rem, 2.25vw, 2.2rem);
+		line-height: 1.13;
+		letter-spacing: -0.03em;
+	}
+
+	.testimonial h3 {
+		margin: 2rem 0 0;
+		font-size: 1.05rem;
+		font-weight: 600;
+		letter-spacing: -0.02em;
+	}
+
+	.testimonial h3 {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.55rem;
+	}
+
+	.testimonial__linkedin {
+		display: inline-grid;
+		width: 1.45rem;
+		height: 1.45rem;
+		place-items: center;
+		border-radius: 0.2rem;
+		background: var(--color-main);
+		color: #fff;
+		transition: transform 180ms ease, background-color 180ms ease;
+	}
+
+	.testimonial__linkedin:hover,
+	.testimonial__linkedin:focus-visible {
+		background: var(--color-ink);
+		transform: translateY(-0.15rem);
+	}
+
+	.testimonial__linkedin svg {
+		width: 1rem;
+		height: 1rem;
+		fill: currentColor;
+	}
+
+	.testimonials__controls {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 2rem;
+		padding: 1.25rem 0;
+	}
+
+	.testimonials__counter {
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		color: var(--color-dim);
+	}
+
+	.testimonials__counter span:first-child { color: var(--color-main); }
+	.testimonials__counter i { width: 1.6rem; height: 1px; background: var(--color-rule); }
+
+	.testimonials__actions,
+	.testimonials__dots { display: flex; align-items: center; gap: 0.7rem; }
+
+	.testimonials__arrow,
+	.testimonials__dot {
+		border: 0;
+		background: transparent;
+		color: var(--color-ink);
+		cursor: pointer;
+	}
+
+	.testimonials__arrow {
+		width: 2.75rem;
+		height: 2.75rem;
+		border: 1px solid var(--color-rule);
+		font-size: 1.2rem;
+		transition: border-color 180ms ease, color 180ms ease, background-color 180ms ease;
+	}
+
+	.testimonials__arrow:hover,
+	.testimonials__arrow:focus-visible { border-color: var(--color-main); background: var(--color-main); color: #fff; }
+
+	.testimonials__dot { width: 1.7rem; height: 1.2rem; padding: 0.45rem 0; }
+	.testimonials__dot::after { display: block; height: 2px; background: var(--color-rule); content: ""; transition: background-color 180ms ease; }
+	.testimonials__dot[aria-selected="true"]::after { background: var(--color-main); }
+
+	@media (max-width: 700px) {
+		.testimonials { padding: 6.5rem 1rem; }
+		.testimonials__header { grid-template-columns: 1fr; gap: 1.75rem; margin-bottom: 4rem; }
+		.testimonials__marker { padding-top: 0; }
+		.testimonials__header h2 { font-size: clamp(4.1rem, 18vw, 5.5rem); }
+		.testimonial { grid-template-columns: 1fr; }
+		.testimonial__portrait { max-height: none; }
+		.testimonial__content { min-height: 24rem; padding: 2rem 1.25rem 2.5rem; }
+		.testimonial__context { margin-top: 4rem; }
+		.testimonials__controls { align-items: flex-start; flex-direction: column; }
+		.testimonials__actions { width: 100%; justify-content: space-between; }
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.testimonials__track,
+		.testimonials__arrow,
+		.testimonials__dot::after { transition: none; }
+	}
+</style>
