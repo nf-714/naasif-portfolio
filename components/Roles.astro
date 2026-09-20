@@ -1,0 +1,281 @@
+---
+const roles = [
+	{
+		number: "01",
+		title: "Applied AI Specialist",
+		description:
+			"AI pilots often look promising but fail to change how the business runs. Applied AI turns the right opportunities into dependable systems that reduce costs, accelerate decisions, and expand capacity.",
+	},
+	{
+		number: "02",
+		title: "AI Automation Engineer",
+		description:
+			"Repetitive work consumes time, creates errors, and limits scale. Reliable automation removes that operational drag, shortening turnaround times and increasing output without increasing overhead.",
+	},
+	{
+		number: "03",
+		title: "Agentic AI Engineering",
+		description:
+			"AI agents become a liability when they lack context, guardrails, or clear ownership. Well-designed agentic systems reduce manual coordination and accelerate complex workflows while keeping critical judgment under human control.",
+	},
+	{
+		number: "04",
+		title: "Growth Engineer",
+		description:
+			"Growth stalls when experiments move slowly and results remain unclear. Faster testing and stronger measurement reveal what drives acquisition, conversion, and retention—so winning ideas can scale.",
+	},
+	{
+		number: "05",
+		title: "GTM Systems Specialist",
+		description:
+			"Pipeline becomes unpredictable when targeting, qualification, outreach, and follow-up operate in silos. A connected GTM system improves lead quality, accelerates handoffs, and turns activity into sales-ready opportunities.",
+	},
+	{
+		number: "06",
+		title: "Revenue Operations Specialist",
+		description:
+			"Revenue leaks when marketing, sales, CRM, and reporting tell different stories. One aligned revenue process creates cleaner data, stronger conversion, and more reliable forecasts.",
+	},
+	{
+		number: "07",
+		title: "Marketing Operations",
+		description:
+			"Campaign performance suffers when automation, CRM, attribution, and lead management are disconnected. Marketing operations connects the stack to reduce wasted spend and improve conversion.",
+	},
+	{
+		number: "08",
+		title: "Business Intelligence Analyst",
+		description:
+			"Fragmented data leaves teams debating what happened instead of deciding what comes next. Clear reporting turns scattered signals into actionable insights that expose risks and uncover opportunities.",
+	},
+	{
+		number: "09",
+		title: "Business Analytics",
+		description:
+			"Teams struggle to improve performance when metrics lack business context. Business analytics connects operational and commercial data to the decisions that improve margin, conversion, and efficiency.",
+	},
+	{
+		number: "10",
+		title: "Technical Business Development Specialist",
+		description:
+			"Strong technical capabilities cannot create revenue when they are disconnected from customer needs. Translating those needs into relevant solutions strengthens partnerships, shortens sales cycles, and opens new markets.",
+	},
+	{
+		number: "11",
+		title: "AI Product Manager",
+		description:
+			"AI products lose direction when model capabilities take priority over customer problems. AI product management aligns user needs, technical constraints, and commercial goals to build solutions people adopt and businesses can scale.",
+	},
+];
+---
+
+<section id="roles" class="roles" aria-labelledby="roles-title">
+	<div class="roles__inner">
+		<header class="roles__header">
+			<p class="roles__marker" data-reveal="up"><span>07 /</span> Roles I am open for</p>
+			<h2 id="roles-title" data-reveal="up">Where I can create the most business value.</h2>
+		</header>
+
+		<div class="roles__list">
+			{
+				roles.map((role, index) => (
+					<article
+						class="roles__row"
+						data-reveal="up"
+						style={`--reveal-delay: ${index * 55}ms;`}
+					>
+						<span class="roles__number" aria-hidden="true">{role.number}</span>
+						<h3>{role.title}</h3>
+						<p>{role.description}</p>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.roles {
+		--roles-surface: #0b0b0d;
+		--roles-ink: #ffffff;
+		--roles-muted: #b8b8c3;
+		--roles-rule: rgba(255, 255, 255, 0.17);
+		padding: clamp(7rem, 11vw, 11rem) 1.5rem;
+		background: var(--roles-surface);
+		color: var(--roles-ink);
+	}
+
+	.roles__inner {
+		width: min(100%, 93rem);
+		margin-inline: auto;
+	}
+
+	.roles__header {
+		display: grid;
+		grid-template-columns: minmax(12rem, 0.85fr) minmax(0, 2fr);
+		gap: clamp(2rem, 6vw, 7rem);
+		align-items: start;
+		margin-bottom: clamp(4.5rem, 8vw, 8rem);
+	}
+
+	.roles__marker {
+		margin: 0;
+		padding-top: 0.75rem;
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.16em;
+		color: var(--roles-muted);
+		text-transform: uppercase;
+	}
+
+	.roles__marker span,
+	.roles__number {
+		color: #6f59ff;
+	}
+
+	.roles__header h2 {
+		max-width: 50rem;
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: clamp(4.7rem, 7.5vw, 6rem);
+		font-weight: 500;
+		line-height: 0.82;
+		letter-spacing: -0.03em;
+		text-wrap: balance;
+	}
+
+	.roles__list {
+		border-top: 1px solid var(--roles-rule);
+	}
+
+	.roles__row {
+		position: relative;
+		display: grid;
+		grid-template-columns: minmax(4rem, 0.28fr) minmax(15rem, 0.82fr) minmax(20rem, 1.35fr);
+		gap: clamp(1.5rem, 4vw, 4.5rem);
+		align-items: start;
+		padding: clamp(2.25rem, 3.8vw, 3.7rem) 0;
+		border-bottom: 1px solid var(--roles-rule);
+		isolation: isolate;
+	}
+
+	.roles__row::before {
+		position: absolute;
+		inset: 0 -1.5rem;
+		z-index: -1;
+		background: var(--color-main);
+		content: "";
+		transform: scaleX(0);
+		transform-origin: right center;
+		transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	.roles__number {
+		font-family: var(--font-display);
+		font-size: clamp(2.6rem, 4vw, 4.25rem);
+		font-weight: 500;
+		font-variant-numeric: tabular-nums;
+		line-height: 0.78;
+		letter-spacing: -0.025em;
+		transition: color 240ms ease;
+	}
+
+	.roles__row h3 {
+		max-width: 19rem;
+		margin: 0;
+		font-size: clamp(1.45rem, 2vw, 1.9rem);
+		font-weight: 600;
+		line-height: 1.06;
+		letter-spacing: -0.03em;
+		transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	.roles__row p {
+		max-width: 43rem;
+		margin: 0;
+		font-size: clamp(1rem, 1.22vw, 1.13rem);
+		line-height: 1.62;
+		color: var(--roles-muted);
+		transition: color 240ms ease;
+	}
+
+	.roles__row:hover::before {
+		transform: scaleX(1);
+		transform-origin: left center;
+	}
+
+	.roles__row:hover .roles__number,
+	.roles__row:hover p {
+		color: var(--roles-ink);
+	}
+
+	.roles__row:hover h3 {
+		transform: translateX(0.35rem);
+	}
+
+	@media (max-width: 900px) {
+		.roles__row {
+			grid-template-columns: 4rem minmax(13rem, 0.85fr) minmax(16rem, 1.15fr);
+			gap: 1.5rem;
+		}
+	}
+
+	@media (max-width: 700px) {
+		.roles {
+			padding: 6.5rem 1rem;
+		}
+
+		.roles__header {
+			grid-template-columns: 1fr;
+			gap: 1.75rem;
+			margin-bottom: 4rem;
+		}
+
+		.roles__marker {
+			padding-top: 0;
+		}
+
+		.roles__header h2 {
+			font-size: clamp(4.1rem, 18vw, 5.5rem);
+		}
+
+		.roles__row {
+			grid-template-columns: 3rem minmax(0, 1fr);
+			gap: 0.75rem 1rem;
+			padding: 2.2rem 0;
+		}
+
+		.roles__row::before {
+			inset-inline: -1rem;
+		}
+
+		.roles__number {
+			grid-row: 1 / span 2;
+			font-size: 2.7rem;
+		}
+
+		.roles__row h3 {
+			max-width: 18rem;
+		}
+
+		.roles__row p {
+			font-size: 1rem;
+			line-height: 1.58;
+		}
+	}
+
+	@media (hover: none) {
+		.roles__row::before {
+			display: none;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.roles__row::before,
+		.roles__row h3,
+		.roles__row p,
+		.roles__number {
+			transition: none;
+		}
+	}
+</style>

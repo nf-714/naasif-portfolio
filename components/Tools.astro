@@ -1,0 +1,500 @@
+---
+const agenticTools = [
+	{ name: "Cursor", image: "/assets/tools/cursor.png" },
+	{ name: "Codex", image: "/assets/tools/codex.png" },
+	{ name: "OpenCode", image: "/assets/tools/opencode.png" },
+	{ name: "Antigravity", image: "/assets/tools/antigravity.png" },
+];
+
+const gtmTools = [
+	{ name: "Instantly", image: "/assets/tools/instantly.png" },
+	{ name: "Apify", image: "/assets/tools/apify.png" },
+	{ name: "LinkedIn Sales Navigator", image: "/assets/tools/linkedin-sales-navigator.png" },
+];
+
+const frameworkTools = [
+	{ name: "Python", use: "AI agent implementation", image: "/assets/tools/python.png" },
+	{ name: "LangChain", use: "Agent application framework", image: "/assets/tools/langchain.png" },
+	{ name: "LangGraph", use: "Stateful agent orchestration", image: "/assets/tools/langgraph.svg", crop: true },
+	{ name: "Mastra.ai", use: "TypeScript agent framework", image: "/assets/tools/mastra.png" },
+	{ name: "NestJS", use: "Business logic", image: "/assets/tools/nestjs.png" },
+	{ name: "Better Auth", use: "Authentication", image: "/assets/tools/better-auth.png" },
+	{ name: "Astro", use: "Landing pages", image: "/assets/tools/astro.png" },
+	{ name: "React", use: "Dashboard applications", image: "/assets/tools/react.png" },
+	{ name: "shadcn/ui", use: "Component library", image: "/assets/tools/shadcn.png" },
+	{ name: "Figma", use: "Product and interface design", image: "/assets/tools/figma.png" },
+];
+---
+
+<section id="tools" class="tools" aria-labelledby="tools-title">
+	<div class="tools__inner">
+		<header class="tools__header">
+			<p class="tools__marker" data-reveal="up"><span>06 /</span> Tools I use</p>
+			<div>
+				<h2 id="tools-title" data-reveal="up">The stack behind the systems.</h2>
+				<p data-reveal="up">A focused toolkit for moving from business problem to working product, pipeline, or decision.</p>
+			</div>
+		</header>
+
+		<div class="tools__bands">
+			<section class="tool-band tool-band--agentic" aria-labelledby="agentic-tools-title" data-reveal="up">
+				<header class="tool-band__header">
+					<span>01</span>
+					<h3 id="agentic-tools-title">Agentic Engineering</h3>
+					<p>Build, orchestrate, and verify.</p>
+				</header>
+				<ul class="tool-band__list tool-band__list--four" role="list">
+					{agenticTools.map((tool) => (
+						<li>
+							<span class="tool-band__logo"><img src={tool.image} alt="" width="256" height="256" loading="lazy" decoding="async" /></span>
+							<strong>{tool.name}</strong>
+						</li>
+					))}
+				</ul>
+			</section>
+
+			<section class="tool-band tool-band--gtm" aria-labelledby="gtm-tools-title" data-reveal="up">
+				<header class="tool-band__header">
+					<span>02</span>
+					<h3 id="gtm-tools-title">GTM Systems</h3>
+					<p>Find, enrich, and reach opportunities.</p>
+				</header>
+				<ul class="tool-band__list tool-band__list--three" role="list">
+					{gtmTools.map((tool) => (
+						<li>
+							<span class="tool-band__logo"><img src={tool.image} alt="" width="256" height="256" loading="lazy" decoding="async" /></span>
+							<strong>{tool.name}</strong>
+						</li>
+					))}
+				</ul>
+			</section>
+
+			<section class="tool-band tool-band--frameworks" aria-labelledby="framework-tools-title" data-reveal="up">
+				<header class="tool-band__header">
+					<span>03</span>
+					<h3 id="framework-tools-title">Frameworks + Libraries</h3>
+					<p>Production foundations with a clear job.</p>
+				</header>
+				<ul class="framework-grid" role="list">
+					{frameworkTools.map((tool) => (
+						<li>
+							<span class="framework-grid__logo"><img src={tool.image} alt="" width="256" height="256" loading="lazy" decoding="async" data-symbol-crop={tool.crop ? "" : undefined} /></span>
+							<div>
+								<strong>{tool.name}</strong>
+								<span>{tool.use}</span>
+							</div>
+						</li>
+					))}
+				</ul>
+			</section>
+		</div>
+	</div>
+</section>
+
+<style>
+	.tools {
+		--tools-ink: var(--color-ink);
+		--tools-muted: var(--color-muted);
+		--tools-rule: var(--color-rule);
+		padding: clamp(7rem, 10vw, 10rem) 1.5rem;
+		background: var(--color-surface);
+		color: var(--tools-ink);
+	}
+
+	.tools__inner {
+		width: min(100%, 93rem);
+		margin-inline: auto;
+	}
+
+	.tools__header {
+		display: grid;
+		grid-template-columns: minmax(12rem, 0.85fr) minmax(0, 2fr);
+		gap: clamp(2rem, 6vw, 7rem);
+		align-items: start;
+		margin-bottom: clamp(4.5rem, 8vw, 7.5rem);
+	}
+
+	.tools__marker {
+		margin: 0;
+		padding-top: 0.75rem;
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.16em;
+		color: var(--color-dim);
+		text-transform: uppercase;
+	}
+
+	.tools__marker span {
+		color: var(--color-main);
+	}
+
+	.tools__header h2 {
+		max-width: 48rem;
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: clamp(4.8rem, 7.5vw, 6rem);
+		font-weight: 500;
+		line-height: 0.82;
+		letter-spacing: -0.03em;
+		text-wrap: balance;
+	}
+
+	.tools__header > div > p {
+		max-width: 34rem;
+		margin: 2rem 0 0;
+		font-size: clamp(1rem, 1.25vw, 1.12rem);
+		line-height: 1.6;
+		color: var(--tools-muted);
+	}
+
+	.tools__bands {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.tool-band {
+		display: grid;
+		grid-template-columns: minmax(15rem, 0.76fr) minmax(0, 2fr);
+		border: 1px solid var(--tools-rule);
+	}
+
+	.tool-band__header {
+		display: flex;
+		min-height: 20rem;
+		flex-direction: column;
+		padding: clamp(2rem, 3.5vw, 3.5rem);
+		border-right: 1px solid currentColor;
+	}
+
+	.tool-band__header > span {
+		font-family: var(--font-display);
+		font-size: clamp(3.5rem, 5vw, 5.2rem);
+		font-variant-numeric: tabular-nums;
+		line-height: 0.75;
+		letter-spacing: -0.025em;
+		opacity: 0.5;
+	}
+
+	.tool-band__header h3 {
+		max-width: 18rem;
+		margin: auto 0 0;
+		font-size: clamp(1.65rem, 2.3vw, 2.25rem);
+		font-weight: 600;
+		line-height: 1;
+		letter-spacing: -0.035em;
+	}
+
+	.tool-band__header p {
+		margin: 0.85rem 0 0;
+		font-size: 0.88rem;
+		line-height: 1.5;
+		opacity: 0.68;
+	}
+
+	.tool-band--agentic {
+		border-color: #222229;
+		background: #0b0b0d;
+		color: #fff;
+	}
+
+	.tool-band--agentic .tool-band__header {
+		border-color: rgba(255, 255, 255, 0.18);
+	}
+
+	.tool-band--gtm {
+		border-color: var(--color-main);
+		background: var(--color-main);
+		color: #fff;
+	}
+
+	.tool-band--gtm .tool-band__header {
+		border-color: rgba(255, 255, 255, 0.26);
+	}
+
+	.tool-band--frameworks {
+		background: var(--color-surface-alt);
+	}
+
+	.tool-band--frameworks .tool-band__header {
+		border-color: var(--tools-rule);
+	}
+
+	.tool-band__list,
+	.framework-grid {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.tool-band__list {
+		display: grid;
+	}
+
+	.tool-band__list--four {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	.tool-band__list--three {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.tool-band__list li {
+		display: flex;
+		min-width: 0;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: 2rem;
+		padding: clamp(1.5rem, 2.6vw, 2.5rem);
+		border-right: 1px solid rgba(255, 255, 255, 0.18);
+	}
+
+	.tool-band__list li:last-child {
+		border-right: 0;
+	}
+
+	.tool-band__logo,
+	.framework-grid__logo {
+		display: grid;
+		width: clamp(4.25rem, 5.5vw, 5.5rem);
+		aspect-ratio: 1;
+		place-items: center;
+		border-radius: 1rem;
+		background: #fff;
+		box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.15);
+		transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	.tool-band__logo img,
+	.framework-grid__logo img {
+		width: 68%;
+		height: 68%;
+		object-fit: contain;
+	}
+
+	.tool-band__list strong {
+		font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+		font-weight: 600;
+		letter-spacing: -0.025em;
+	}
+
+	.tool-band__list li:hover .tool-band__logo,
+	.framework-grid li:hover .framework-grid__logo {
+		transform: translateY(-0.3rem) rotate(-2deg);
+	}
+
+	.framework-grid {
+		display: grid;
+		grid-template-columns: repeat(12, minmax(0, 1fr));
+	}
+
+	.framework-grid li {
+		display: flex;
+		grid-column: span 3;
+		min-width: 0;
+		min-height: 10rem;
+		align-items: center;
+		gap: 1.1rem;
+		padding: clamp(1.25rem, 2vw, 2rem);
+		border-right: 1px solid var(--tools-rule);
+		border-bottom: 1px solid var(--tools-rule);
+	}
+
+	.framework-grid li:nth-child(4),
+	.framework-grid li:nth-child(7),
+	.framework-grid li:nth-child(10) {
+		border-right: 0;
+	}
+
+	.framework-grid li:nth-child(n + 5) {
+		grid-column: span 4;
+	}
+
+	.framework-grid li:nth-child(n + 8) {
+		border-bottom: 0;
+	}
+
+	.framework-grid li:last-child {
+		border-right: 0;
+	}
+
+	.framework-grid__logo {
+		width: 4rem;
+		flex: 0 0 auto;
+		border: 1px solid var(--tools-rule);
+		box-shadow: 0 0.6rem 1.6rem rgba(21, 17, 72, 0.08);
+	}
+
+	.framework-grid__logo img[data-symbol-crop] {
+		display: block;
+		width: 68%;
+		height: 68%;
+		aspect-ratio: 1;
+		object-fit: cover;
+		object-position: 0 50%;
+	}
+
+	.framework-grid li > div {
+		min-width: 0;
+	}
+
+	.framework-grid strong,
+	.framework-grid span {
+		display: block;
+	}
+
+	.framework-grid strong {
+		font-size: 1.02rem;
+		line-height: 1.15;
+	}
+
+	.framework-grid div > span {
+		margin-top: 0.35rem;
+		font-size: 0.82rem;
+		line-height: 1.4;
+		color: var(--tools-muted);
+	}
+
+	@media (max-width: 1000px) {
+		.tool-band {
+			grid-template-columns: minmax(13rem, 0.7fr) minmax(0, 2fr);
+		}
+
+		.tool-band__list--four {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.tool-band__list--four li:nth-child(-n + 2) {
+			border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+		}
+
+		.tool-band__list--four li:nth-child(2n) {
+			border-right: 0;
+		}
+
+		.framework-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.framework-grid li,
+		.framework-grid li:nth-child(n + 5) {
+			grid-column: auto;
+		}
+
+		.framework-grid li:nth-child(4),
+		.framework-grid li:nth-child(7) {
+			border-right: 1px solid var(--tools-rule);
+		}
+
+		.framework-grid li:nth-child(2n) {
+			border-right: 0;
+		}
+
+		.framework-grid li:nth-child(n + 8) {
+			border-bottom: 1px solid var(--tools-rule);
+		}
+
+		.framework-grid li:nth-child(n + 9) {
+			border-bottom: 0;
+		}
+	}
+
+	@media (max-width: 700px) {
+		.tools {
+			padding: 6.5rem 1rem;
+		}
+
+		.tools__header {
+			grid-template-columns: 1fr;
+			gap: 1.75rem;
+			margin-bottom: 4rem;
+		}
+
+		.tools__marker {
+			padding-top: 0;
+		}
+
+		.tools__header h2 {
+			font-size: clamp(4.1rem, 18vw, 5.5rem);
+		}
+
+		.tools__header > div > p {
+			margin-top: 1.5rem;
+		}
+
+		.tool-band {
+			grid-template-columns: 1fr;
+		}
+
+		.tool-band__header {
+			min-height: 14rem;
+			border-right: 0;
+			border-bottom: 1px solid currentColor;
+		}
+
+		.tool-band--agentic .tool-band__header,
+		.tool-band--gtm .tool-band__header {
+			border-bottom-color: rgba(255, 255, 255, 0.2);
+		}
+
+		.tool-band__list--four,
+		.framework-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.tool-band__list--three {
+			grid-template-columns: 1fr;
+		}
+
+		.tool-band__list li {
+			min-height: 11rem;
+		}
+
+		.tool-band__list--three li {
+			border-right: 0;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+		}
+
+		.tool-band__list--three li:last-child {
+			border-bottom: 0;
+		}
+
+		.framework-grid li {
+			min-height: 9rem;
+			align-items: flex-start;
+			flex-direction: column;
+		}
+
+		.framework-grid__logo {
+			width: 3.5rem;
+		}
+	}
+
+	@media (max-width: 420px) {
+		.tool-band__list--four,
+		.tool-band__list--three,
+		.framework-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.tool-band__list li,
+		.framework-grid li,
+		.framework-grid li:nth-child(2n),
+		.framework-grid li:nth-child(4n),
+		.framework-grid li:nth-child(n + 9) {
+			border-right: 0;
+			border-bottom: 1px solid currentColor;
+		}
+
+		.tool-band__list li:last-child,
+		.framework-grid li:last-child {
+			border-bottom: 0;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.tool-band__logo,
+		.framework-grid__logo {
+			transition: none;
+		}
+	}
+</style>

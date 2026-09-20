@@ -47,8 +47,9 @@ const specialties = [
 					<path d="M2 2l14 14M16 2v14H2"></path>
 				</svg>
 			</a>
-			<p class="hero__role">AI Engineer and growth systems<br />operator connecting data,<br />growth, and execution.</p>
-			<p class="hero__status">Open to AI engineering, GTM, growth, and analytics roles</p>
+			<p class="hero__role">Applied AI &amp;<br />GTM Systems Specialist</p>
+			<p class="hero__status">I turn business problems into AI-powered GTM systems that move pipeline and improve execution.</p>
+			<p class="hero__availability">Open to Applied AI, GTM, Growth, and RevOps roles.</p>
 		</div>
 
 		<div class="hero__portrait" aria-hidden="true">
@@ -322,25 +323,35 @@ const specialties = [
 	}
 
 	.hero__status {
-		position: relative;
+		max-width: 21rem;
 		margin: 0;
-		padding-left: 1.55rem;
 		font-size: 0.83rem;
 		font-weight: 600;
+		line-height: 1.4;
 		color: rgba(255, 255, 255, 0.76);
 	}
 
-	.hero__status::before,
-	.hero__status::after {
+	.hero__availability {
+		position: relative;
+		max-width: 21rem;
+		margin: 0.8rem 0 0;
+		padding-left: 1.55rem;
+		font-size: 0.72rem;
+		font-weight: 600;
+		line-height: 1.4;
+		color: rgba(255, 255, 255, 0.6);
+	}
+
+	.hero__availability::before,
+	.hero__availability::after {
 		position: absolute;
-		top: 50%;
 		left: 0;
 		border-radius: 50%;
 		content: "";
-		transform: translateY(-50%);
 	}
 
-	.hero__status::before {
+	.hero__availability::before {
+		top: 0.38rem;
 		z-index: 1;
 		width: 0.48rem;
 		height: 0.48rem;
@@ -348,7 +359,8 @@ const specialties = [
 		background: var(--hero-blue);
 	}
 
-	.hero__status::after {
+	.hero__availability::after {
+		top: 0.12rem;
 		width: 1rem;
 		height: 1rem;
 		background: rgba(39, 1, 255, 0.16);
@@ -434,8 +446,8 @@ const specialties = [
 	}
 
 	@keyframes status-pulse {
-		0% { transform: translateY(-50%) scale(0.75); opacity: 0.75; }
-		70%, 100% { transform: translateY(-50%) scale(1.55); opacity: 0; }
+		0% { transform: scale(0.75); opacity: 0.75; }
+		70%, 100% { transform: scale(1.55); opacity: 0; }
 	}
 
 	@keyframes hero-title-reveal {
@@ -524,6 +536,10 @@ const specialties = [
 			line-height: 1.35;
 		}
 
+		.hero__availability {
+			max-width: 17rem;
+		}
+
 		.hero__portrait {
 			position: absolute;
 			inset: auto 50% 0 auto;
@@ -592,7 +608,7 @@ const specialties = [
 	@media (prefers-reduced-motion: reduce) {
 		.hero h1,
 		.hero__title-word,
-		.hero__status::after {
+		.hero__availability::after {
 			animation: none;
 		}
 
