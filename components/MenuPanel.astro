@@ -205,8 +205,8 @@
 
 	.menu-panel__nav {
 		display: grid;
-		gap: clamp(1.4rem, 3vw, 2.7rem);
-		margin-top: clamp(5rem, 13vh, 10rem);
+		gap: clamp(0.9rem, 1.8vw, 1.7rem);
+		margin-top: clamp(3rem, 8vh, 6rem);
 	}
 
 	.menu-panel__nav a {
@@ -214,7 +214,7 @@
 		align-items: baseline;
 		gap: 1.2rem;
 		color: var(--color-muted);
-		font-size: clamp(2.5rem, 4.2vw, 4.6rem);
+		font-size: clamp(2.3rem, 3.3vw, 3.7rem);
 		font-weight: 600;
 		line-height: 0.9;
 		letter-spacing: -0.04em;
@@ -320,17 +320,35 @@
 		overflow: hidden;
 	}
 
+	@media (max-height: 720px) and (min-width: 901px) {
+		.menu-panel__nav {
+			gap: 1rem;
+			margin-top: 3.25rem;
+		}
+
+		.menu-panel__nav a {
+			font-size: clamp(2rem, 5.8vh, 3rem);
+		}
+	}
+
 	@media (max-width: 900px) {
 		.menu-panel {
 			width: 100%;
+			overflow-y: auto;
 		}
 
 		.menu-panel__aside {
 			display: none;
 		}
 
+		.menu-panel__nav {
+			gap: 1.35rem;
+			margin-top: 4rem;
+			padding-bottom: 2.5rem;
+		}
+
 		.menu-panel__nav a {
-			font-size: clamp(2.3rem, 8vw, 4rem);
+			font-size: clamp(2.1rem, 6.5vw, 3.5rem);
 		}
 	}
 
@@ -340,13 +358,13 @@
 		}
 
 		.menu-panel__nav {
-			gap: 1.5rem;
-			margin-top: 4.5rem;
+			gap: 1.35rem;
+			margin-top: 4rem;
 		}
 
 		.menu-panel__nav a {
 			gap: 0.7rem;
-			font-size: clamp(2rem, 9vw, 3rem);
+			font-size: clamp(1.9rem, 8vw, 2.8rem);
 		}
 
 		.menu-panel__nav a span {
